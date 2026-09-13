@@ -269,8 +269,8 @@
         <div class="scout-search-panel">
           <div class="scout-inputs">
             <div class="scout-input-field">
-              <label>Search Term / Product Spec</label>
-              <input type="text" id="scoutQueryInput" placeholder="e.g. PA EVOH 7 layer barrier film, thermoforming webs, flexo inks, solventless PU adhesive..." />
+              <label>Search Term / Product Spec / Company Website</label>
+              <input type="text" id="scoutQueryInput" placeholder="e.g. 7-layer PA EVOH barrier film, vacuum pouches, flexo inks, OR enter website (e.g. www.bilcare.com)..." />
             </div>
             <div class="scout-select-field">
               <label>Maharashtra Target Area</label>
@@ -293,13 +293,15 @@
 
           <!-- Quick Scout Query Chips -->
           <div class="quick-scout-chips">
-            <span class="chips-label">Quick Scans:</span>
+            <span class="chips-label">Quick Real-Time Scans:</span>
             <button class="chip-btn" data-query="7 layer PA EVOH barrier film manufacturer" data-city="Pune Chakan">7-Layer EVOH Film Pune</button>
             <button class="chip-btn" data-query="vacuum pouches manufacturer contact" data-city="Tarapur Boisar">Vacuum Pouches Tarapur</button>
             <button class="chip-btn" data-query="thermoforming lidding films factory address" data-city="Mumbai MMR">Thermoforming Lidding Mumbai</button>
             <button class="chip-btn" data-query="flexo inks for flexible packaging manufacturer" data-city="Vasai Palghar">Flexo Inks Vasai</button>
             <button class="chip-btn" data-query="solventless PU lamination adhesives manufacturer" data-city="Ambernath Dombivli">Solventless PU Adhesives</button>
             <button class="chip-btn" data-query="color additive masterbatch for extrusion films" data-city="Navi Mumbai TTC">Masterbatch Navi Mumbai</button>
+            <button class="chip-btn" data-query="bilcare.com" data-city="Pune Chakan">🌐 bilcare.com (Live Probe)</button>
+            <button class="chip-btn" data-query="tcpl.in" data-city="Mumbai MMR">🌐 tcpl.in (Live Probe)</button>
           </div>
         </div>
 
@@ -441,6 +443,10 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
                 <span>Bookmark Lead</span>
               </button>
+              <button id="btnModalDelete" class="btn btn-danger btn-block mt-2" title="Delete this plant (Not interested)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/></svg>
+                <span>Delete Plant (Not Interested)</span>
+              </button>
             </div>
           </div>
         </div>
@@ -479,6 +485,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="toast-notification" style="display: none;">
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage">Plant deleted successfully</span>
+  </div>
 
   <script src="app.js"></script>
 </body>

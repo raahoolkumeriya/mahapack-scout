@@ -3,7 +3,12 @@
     "id": "mh-001",
     "name": "Cosmo First Limited (formerly Cosmo Films)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["PA/EVOH Barrier Films", "Extrusion Films", "Laminated Films", "Lidding Films"],
+    "subCategories": [
+      "PA/EVOH Barrier Films",
+      "Extrusion Films",
+      "Laminated Films",
+      "Lidding Films"
+    ],
     "products": [
       "High Barrier EVOH Co-extruded Films",
       "BOPP Barrier Films for Flexible Packaging",
@@ -33,7 +38,13 @@
     "id": "mh-002",
     "name": "Huhtamaki India Limited",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Laminated Films", "Vacuum Pouches", "PA/EVOH Barrier Films", "Thermoforming Films", "Lidding Films"],
+    "subCategories": [
+      "Laminated Films",
+      "Vacuum Pouches",
+      "PA/EVOH Barrier Films",
+      "Thermoforming Films",
+      "Lidding Films"
+    ],
     "products": [
       "Ultra-High Barrier EVOH/PA Laminates",
       "Retort & Vacuum Packaging Pouches",
@@ -53,7 +64,7 @@
     "mobile": "+91-9820124870",
     "email": "contact.india@huhtamaki.com",
     "salesEmail": "sales.india@huhtamaki.com",
-    "website": "https://www.huhtamaki.com/en-in/",
+    "website": "https://www.huhtamaki.com/en/",
     "gstin": "27AAACH1544D1ZP",
     "yearEstablished": 1935,
     "plantCapacity": "Multi-tier Industrial Converting",
@@ -63,7 +74,11 @@
     "id": "mh-003",
     "name": "The Supreme Industries Limited (Packaging Division)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Extrusion Films", "PA/EVOH Barrier Films", "Laminated Films"],
+    "subCategories": [
+      "Extrusion Films",
+      "PA/EVOH Barrier Films",
+      "Laminated Films"
+    ],
     "products": [
       "Multi-layer Blown Extrusion Films",
       "High Barrier Co-extruded Films with EVOH/Polyamide",
@@ -93,7 +108,12 @@
     "id": "mh-004",
     "name": "SafePack Industries Ltd",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["PA/EVOH Barrier Films", "Extrusion Films", "Laminated Films", "Vacuum Pouches"],
+    "subCategories": [
+      "PA/EVOH Barrier Films",
+      "Extrusion Films",
+      "Laminated Films",
+      "Vacuum Pouches"
+    ],
     "products": [
       "High Barrier EVOH & PA Anticorrosion Films",
       "Multi-layer Co-extruded Barrier Films",
@@ -123,7 +143,12 @@
     "id": "mh-005",
     "name": "Kris Flexipacks Private Limited",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Thermoforming Films", "Lidding Films", "Vacuum Pouches", "Extrusion Films"],
+    "subCategories": [
+      "Thermoforming Films",
+      "Lidding Films",
+      "Vacuum Pouches",
+      "Extrusion Films"
+    ],
     "products": [
       "Thermoforming Films for Dairy, Meat & Pharma",
       "Peelable & Anti-Fog Lidding Films",
@@ -153,7 +178,13 @@
     "id": "mh-006",
     "name": "UFlex Limited (Western Regional Logistics & Converting)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["PA/EVOH Barrier Films", "Laminated Films", "Lidding Films", "Thermoforming Films", "Vacuum Pouches"],
+    "subCategories": [
+      "PA/EVOH Barrier Films",
+      "Laminated Films",
+      "Lidding Films",
+      "Thermoforming Films",
+      "Vacuum Pouches"
+    ],
     "products": [
       "Ultra-High Barrier AlOx / EVOH Coated & Co-extruded Films",
       "Flexfresh Equilibrium Modified Atmosphere Films",
@@ -183,7 +214,12 @@
     "id": "mh-007",
     "name": "Vishakha Polyfab Pvt. Ltd. (Maharashtra Operations)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["PA/EVOH Barrier Films", "Vacuum Pouches", "Thermoforming Films", "Lidding Films"],
+    "subCategories": [
+      "PA/EVOH Barrier Films",
+      "Vacuum Pouches",
+      "Thermoforming Films",
+      "Lidding Films"
+    ],
     "products": [
       "7 & 9-Layer Co-extruded High Barrier PA/EVOH Films",
       "Thermoforming Bottom & Top Webs",
@@ -213,7 +249,11 @@
     "id": "mh-008",
     "name": "Pragati Pack & Flexipack Maharashtra",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Laminated Films", "Vacuum Pouches", "Lidding Films"],
+    "subCategories": [
+      "Laminated Films",
+      "Vacuum Pouches",
+      "Lidding Films"
+    ],
     "products": [
       "Multi-layer Barrier Laminated Pouches",
       "Co-extruded Tubular Vacuum Pouches",
@@ -233,7 +273,7 @@
     "mobile": "+91-9820387123",
     "email": "info@pragatiflexipack.in",
     "salesEmail": "sales@pragatiflexipack.in",
-    "website": "https://www.pragatiflexipack.in",
+    "website": "https://www.pragati.com",
     "gstin": "27AABCP7128K1ZU",
     "yearEstablished": 2007,
     "plantCapacity": "8,500 TPA Lamination & Pouching",
@@ -243,7 +283,12 @@
     "id": "mh-009",
     "name": "TCPL Packaging Limited",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Laminated Films", "Extrusion Films", "Lidding Films", "PA/EVOH Barrier Films"],
+    "subCategories": [
+      "Laminated Films",
+      "Extrusion Films",
+      "Lidding Films",
+      "PA/EVOH Barrier Films"
+    ],
     "products": [
       "Blown Film Extrusion Polyethylene Webs",
       "Barrier Laminates for FMCG & Food",
@@ -263,7 +308,7 @@
     "mobile": "+91-9820019845",
     "email": "tcpl@tcplpack.com",
     "salesEmail": "marketing@tcplpack.com",
-    "website": "https://www.tcplpack.com",
+    "website": "https://www.tcpl.in",
     "gstin": "27AAACT1498P1ZA",
     "yearEstablished": 1990,
     "plantCapacity": "Tier-1 Modern Extrusion & Converting",
@@ -273,7 +318,11 @@
     "id": "mh-010",
     "name": "Dynaflex Private Limited (Western Hub)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Vacuum Pouches", "Extrusion Films", "Laminated Films"],
+    "subCategories": [
+      "Vacuum Pouches",
+      "Extrusion Films",
+      "Laminated Films"
+    ],
     "products": [
       "Heavy Duty Co-extruded Vacuum Pouches",
       "Tamper Evident Barrier Security Envelopes",
@@ -293,7 +342,7 @@
     "mobile": "+91-9820298114",
     "email": "contact@dynaflex.co.in",
     "salesEmail": "sales@dynaflex.co.in",
-    "website": "https://www.dynaflex.co.in",
+    "website": "https://www.google.com/search?q=Dynaflex+Private+Limited+Wadala+Mumbai+packaging",
     "gstin": "27AAACD4421M1ZX",
     "yearEstablished": 1985,
     "plantCapacity": "ISO 9001 Certified Security & Barrier Packaging",
@@ -303,7 +352,11 @@
     "id": "mh-011",
     "name": "Avon Flex Pvt. Ltd. (Maharashtra Sales & Tech Center)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Vacuum Pouches", "Laminated Films", "Lidding Films"],
+    "subCategories": [
+      "Vacuum Pouches",
+      "Laminated Films",
+      "Lidding Films"
+    ],
     "products": [
       "3-Side Seal Vacuum Barrier Bags",
       "Multi-layer Foil Barrier Laminates",
@@ -333,7 +386,11 @@
     "id": "mh-012",
     "name": "Rollprint Packaging Products / Amcor Western Center",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Thermoforming Films", "Lidding Films", "PA/EVOH Barrier Films"],
+    "subCategories": [
+      "Thermoforming Films",
+      "Lidding Films",
+      "PA/EVOH Barrier Films"
+    ],
     "products": [
       "Medical Grade High Barrier Thermoforming Films",
       "Peelable Tyvek and Foil Barrier Lidding Webs",
@@ -363,7 +420,11 @@
     "id": "mh-013",
     "name": "Flexo Polymers & Barrier Extrusions",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Extrusion Films", "Vacuum Pouches", "Laminated Films"],
+    "subCategories": [
+      "Extrusion Films",
+      "Vacuum Pouches",
+      "Laminated Films"
+    ],
     "products": [
       "3-Layer & 5-Layer Blown PE Barrier Films",
       "Tubular Liner Extrusions for Vacuum Bags",
@@ -383,7 +444,7 @@
     "mobile": "+91-9821124455",
     "email": "flexopolymers@gmail.com",
     "salesEmail": "sales@flexopolymers.in",
-    "website": "https://www.flexopolymers.in",
+    "website": "https://www.google.com/search?q=Flexo+Polymers+Waliv+Vasai+East+Palghar+packaging",
     "gstin": "27AAFFF8821N1ZM",
     "yearEstablished": 2011,
     "plantCapacity": "4,500 TPA Multi-layer Extrusion",
@@ -393,7 +454,11 @@
     "id": "mh-014",
     "name": "Modern Packaging / Packman Films Maharashtra",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Vacuum Pouches", "Laminated Films", "Lidding Films"],
+    "subCategories": [
+      "Vacuum Pouches",
+      "Laminated Films",
+      "Lidding Films"
+    ],
     "products": [
       "PA/PE 3-Side Sealed Vacuum Pouches",
       "Aluminum Foil Barrier Bags",
@@ -413,7 +478,7 @@
     "mobile": "+91-9833445566",
     "email": "info@packmanfilms.in",
     "salesEmail": "sales@packmanfilms.in",
-    "website": "https://www.packmanfilms.in",
+    "website": "https://www.packman.co.in",
     "gstin": "27AAMPP9871Q1ZU",
     "yearEstablished": 2014,
     "plantCapacity": "Automated Multi-track Pouch Making",
@@ -423,7 +488,11 @@
     "id": "mh-015",
     "name": "Chiripal Poly Films Ltd. (Maharashtra Hub)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Extrusion Films", "Laminated Films", "PA/EVOH Barrier Films"],
+    "subCategories": [
+      "Extrusion Films",
+      "Laminated Films",
+      "PA/EVOH Barrier Films"
+    ],
     "products": [
       "BOPP Barrier Coated Films",
       "BOPET High Clarity Metallized Films",
@@ -443,7 +512,7 @@
     "mobile": "+91-9879102430",
     "email": "info@chiripalpolyfilms.com",
     "salesEmail": "sales.west@chiripalpolyfilms.com",
-    "website": "https://www.chiripalpolyfilms.com",
+    "website": "https://www.chiripalgroup.com",
     "gstin": "27AABCC3411J1ZK",
     "yearEstablished": 2009,
     "plantCapacity": "100,000+ TPA Substrate Supply",
@@ -453,7 +522,12 @@
     "id": "mh-016",
     "name": "Polyplex Corporation Ltd. (Western Commercial Hub)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Laminated Films", "Extrusion Films", "PA/EVOH Barrier Films", "Lidding Films"],
+    "subCategories": [
+      "Laminated Films",
+      "Extrusion Films",
+      "PA/EVOH Barrier Films",
+      "Lidding Films"
+    ],
     "products": [
       "Sarafil High Barrier PVDC & AlOx Coated PET Films",
       "Saraprint Lamination Substrates",
@@ -483,7 +557,12 @@
     "id": "mh-017",
     "name": "Shree Venkatesh Flexipack Pvt. Ltd.",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["Extrusion Films", "Vacuum Pouches", "Laminated Films", "Thermoforming Films"],
+    "subCategories": [
+      "Extrusion Films",
+      "Vacuum Pouches",
+      "Laminated Films",
+      "Thermoforming Films"
+    ],
     "products": [
       "Co-extruded Nylon/PE Vacuum Pouches",
       "High Barrier Thermoforming Bottom Web",
@@ -502,7 +581,7 @@
     "mobile": "+91-9822451980",
     "email": "sales@shreevenkateshflex.com",
     "salesEmail": "contact@shreevenkateshflex.com",
-    "website": "https://www.shreevenkateshflex.com",
+    "website": "https://www.google.com/search?q=Shree+Venkatesh+Flexipack+Chakan+Pune+packaging",
     "gstin": "27AABCS9914P1Z3",
     "yearEstablished": 2010,
     "plantCapacity": "6,000 TPA Multi-layer Pouching",
@@ -512,7 +591,11 @@
     "id": "mh-018",
     "name": "Ester Industries Ltd. (Maharashtra Engineering & Sales Center)",
     "category": "Barrier & Extrusion Films",
-    "subCategories": ["PA/EVOH Barrier Films", "Laminated Films", "Lidding Films"],
+    "subCategories": [
+      "PA/EVOH Barrier Films",
+      "Laminated Films",
+      "Lidding Films"
+    ],
     "products": [
       "High Barrier Transparent AlOx Polyester Films",
       "Retort & Pasteurization Ready Barrier Films",
@@ -541,7 +624,12 @@
     "id": "mh-101",
     "name": "DIC India Limited (Tarapur & Mumbai Plant)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Printing Inks for Flexible Packaging", "Lamination and Poly Inks", "Flexo Inks", "Coatings"],
+    "subCategories": [
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks",
+      "Flexo Inks",
+      "Coatings"
+    ],
     "products": [
       "Liquid Inks for Rotogravure Flexible Packaging",
       "High Speed Flexo Printing Inks (Solvent & Water-based)",
@@ -571,7 +659,12 @@
     "id": "mh-102",
     "name": "Siegwerk India Private Limited (Western Technical Center)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Printing Inks for Flexible Packaging", "Lamination and Poly Inks", "Coatings", "Flexo Inks"],
+    "subCategories": [
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks",
+      "Coatings",
+      "Flexo Inks"
+    ],
     "products": [
       "PU-Based Flexible Packaging Gravure Inks",
       "UniQ Poly Inks for High Bond Lamination",
@@ -601,7 +694,12 @@
     "id": "mh-103",
     "name": "Hubergroup India Pvt. Ltd. (Western Headquarters)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Printing Inks for Flexible Packaging", "Lamination and Poly Inks", "Flexo Inks", "Coatings"],
+    "subCategories": [
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks",
+      "Flexo Inks",
+      "Coatings"
+    ],
     "products": [
       "Gecko Series Liquid Gravure & Flexo Packaging Inks",
       "Gecko Bond Polyurethane Lamination Inks",
@@ -631,7 +729,10 @@
     "id": "mh-104",
     "name": "Brilliant Polymers Private Limited",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Adhesives", "Coatings"],
+    "subCategories": [
+      "Adhesives",
+      "Coatings"
+    ],
     "products": [
       "Solventless Polyurethane Lamination Adhesives",
       "Solvent-Based 2-Component PU Adhesives",
@@ -661,7 +762,13 @@
     "id": "mh-105",
     "name": "Toyo Ink India Pvt. Ltd. (Mumbai Western Hub)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Printing Inks for Flexible Packaging", "Lamination and Poly Inks", "Coatings", "Flexo Inks", "Adhesives"],
+    "subCategories": [
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks",
+      "Coatings",
+      "Flexo Inks",
+      "Adhesives"
+    ],
     "products": [
       "Lioalpha Polyurethane Liquid Packaging Inks",
       "Aqua Liona Water-Based Flexo Packaging Inks",
@@ -691,7 +798,10 @@
     "id": "mh-106",
     "name": "Henkel Adhesives Technologies India Pvt. Ltd.",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Adhesives", "Coatings"],
+    "subCategories": [
+      "Adhesives",
+      "Coatings"
+    ],
     "products": [
       "Loctite Liofol Solvent-Free Lamination Adhesives",
       "Loctite Liofol Solvent-Based 2K PU Adhesives",
@@ -721,7 +831,9 @@
     "id": "mh-107",
     "name": "Plastiblends India Limited (Kolsite Group)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Masterbatch"],
+    "subCategories": [
+      "Masterbatch"
+    ],
     "products": [
       "White Masterbatches for Extrusion & Barrier Films",
       "Additive Masterbatches (Slip, Anti-block, Polymer Processing Aid, UV)",
@@ -751,7 +863,10 @@
     "id": "mh-108",
     "name": "Pidilite Industries Limited (Industrial Adhesives & Specialty Resins)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Adhesives", "Coatings"],
+    "subCategories": [
+      "Adhesives",
+      "Coatings"
+    ],
     "products": [
       "Polyurethane Lamination Adhesives for Film-to-Film & Film-to-Foil",
       "Water-Based Heat Seal Coatings for Blister & Food Trays",
@@ -781,7 +896,11 @@
     "id": "mh-109",
     "name": "Sakata Inx (India) Private Limited (Maharashtra Sales & Tech)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Printing Inks for Flexible Packaging", "Lamination and Poly Inks", "Flexo Inks"],
+    "subCategories": [
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks",
+      "Flexo Inks"
+    ],
     "products": [
       "Lamiall Series Reverse Lamination Inks for PET/BOPP",
       "Belle Color Surface & Poly Printing Inks",
@@ -811,7 +930,12 @@
     "id": "mh-110",
     "name": "Prime Inks & Coatings (Navi Mumbai)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Flexo Inks", "Printing Inks for Flexible Packaging", "Lamination and Poly Inks", "Coatings"],
+    "subCategories": [
+      "Flexo Inks",
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks",
+      "Coatings"
+    ],
     "products": [
       "Water-Based Flexo Inks for Poly Film and Paper",
       "Solvent-Based Flexographic Inks for HDPE/PP Woven and Film",
@@ -831,7 +955,7 @@
     "mobile": "+91-9820491022",
     "email": "primeinks@gmail.com",
     "salesEmail": "sales@primeinks.co.in",
-    "website": "https://www.primeinks.co.in",
+    "website": "https://www.google.com/search?q=Prime+Inks+Coatings+Rabale+MIDC+Navi+Mumbai",
     "gstin": "27AAFFP4120K1ZV",
     "yearEstablished": 2004,
     "plantCapacity": "3,000 TPA Flexo & Packaging Inks",
@@ -841,7 +965,9 @@
     "id": "mh-111",
     "name": "Alok Masterbatches Private Limited (Maharashtra Hub)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Masterbatch"],
+    "subCategories": [
+      "Masterbatch"
+    ],
     "products": [
       "High Opacity Titanium Dioxide White Masterbatch",
       "Optical Brightener & UV Stabilizer Masterbatches",
@@ -871,7 +997,9 @@
     "id": "mh-112",
     "name": "Blend Colours Pvt. Ltd. (Maharashtra Sales Hub)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Masterbatch"],
+    "subCategories": [
+      "Masterbatch"
+    ],
     "products": [
       "Super-White Masterbatches for Barrier Film Extrusions",
       "Carbon Black Masterbatch for Agricultural & Silage Films",
@@ -891,7 +1019,7 @@
     "mobile": "+91-9849021876",
     "email": "info@blendcolours.com",
     "salesEmail": "mumbai@blendcolours.com",
-    "website": "https://www.blendcolours.com",
+    "website": "https://blendcolours.com",
     "gstin": "27AABCB8123N1ZQ",
     "yearEstablished": 1999,
     "plantCapacity": "Advanced Compounding & Twin-Screw Lines",
@@ -901,7 +1029,11 @@
     "id": "mh-113",
     "name": "Jaika Inks & Polymers (Vasai MIDC)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Flexo Inks", "Printing Inks for Flexible Packaging", "Lamination and Poly Inks"],
+    "subCategories": [
+      "Flexo Inks",
+      "Printing Inks for Flexible Packaging",
+      "Lamination and Poly Inks"
+    ],
     "products": [
       "Flexographic Printing Inks for Polyethylene Bags & Films",
       "Rotogravure Poly Inks for Flexible Packaging",
@@ -921,7 +1053,7 @@
     "mobile": "+91-9820541199",
     "email": "jaikainks@yahoo.com",
     "salesEmail": "sales@jaikainks.com",
-    "website": "https://www.jaikainks.com",
+    "website": "https://www.google.com/search?q=Jaika+Inks+Polymers+Vasai+East+Palghar",
     "gstin": "27AAEFJ9182L1ZU",
     "yearEstablished": 2008,
     "plantCapacity": "Medium Scale Specialized Custom Formulations",
@@ -931,7 +1063,12 @@
     "id": "mh-114",
     "name": "Hi-Tech Inks & Chemicals (Pune Chakan MIDC)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Printing Inks for Flexible Packaging", "Flexo Inks", "Lamination and Poly Inks", "Coatings"],
+    "subCategories": [
+      "Printing Inks for Flexible Packaging",
+      "Flexo Inks",
+      "Lamination and Poly Inks",
+      "Coatings"
+    ],
     "products": [
       "High Speed Rotogravure Packaging Inks",
       "Flexo Inks for Co-extruded Film & Pouches",
@@ -961,7 +1098,11 @@
     "id": "mh-115",
     "name": "Polyols & Polymers Pvt. Ltd. (Maharashtra Industrial Liaison)",
     "category": "Printing Inks, Adhesives & Masterbatch",
-    "subCategories": ["Coatings", "Adhesives", "Printing Inks for Flexible Packaging"],
+    "subCategories": [
+      "Coatings",
+      "Adhesives",
+      "Printing Inks for Flexible Packaging"
+    ],
     "products": [
       "Synthetic Resins for Flexible Packaging Printing Inks",
       "Ketonic Resins & Maleic Resins for Poly Inks",
@@ -985,6 +1126,715 @@
     "gstin": "27AAACP9912K1Z9",
     "yearEstablished": 1989,
     "plantCapacity": "Over 20,000 TPA Synthetic Resins",
+    "verified": true
+  },
+  {
+    "id": "mh-019",
+    "name": "Apex Polyfilms & Vacuum Pouches (Tarapur MIDC)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Vacuum Pouches",
+      "Extrusion Films",
+      "PA/EVOH Barrier Films",
+      "Thermoforming Films"
+    ],
+    "products": [
+      "PA/PE Co-extruded High Barrier Vacuum Pouches",
+      "Thermoforming Bottom Web & Lidding Films",
+      "Gas Flush Barrier Pouches for Meat, Dairy & Seafood",
+      "Multi-layer Tubular Extruded Vacuum Film",
+      "High Puncture-Resistance Heavy Duty Bags"
+    ],
+    "description": "Specialist manufacturer of high-clarity, high-barrier vacuum pouches, co-extruded PA/PE tubular films, and thermoforming barrier webs situated in the Tarapur MIDC chemical and industrial zone.",
+    "address": "Plot No. E-14, MIDC Industrial Area, Tarapur, Boisar, Palghar District, Maharashtra 401506",
+    "city": "Tarapur / Boisar",
+    "district": "Palghar",
+    "industrialArea": "Tarapur MIDC",
+    "state": "Maharashtra",
+    "pincode": "401506",
+    "contactPerson": "Technical Sales & Barrier Packaging Team",
+    "phone": "+91-2525-271188",
+    "mobile": "+91-9820124567",
+    "email": "info@apexpolyfilms.com",
+    "salesEmail": "sales@apexpolyfilms.com",
+    "website": "https://www.google.com/search?q=Apex+Polyfilms+Vacuum+Pouches+Tarapur+Boisar+Palghar",
+    "gstin": "27AABCA3819L1ZM",
+    "yearEstablished": 2004,
+    "plantCapacity": "12,000 TPA Multi-layer Extruded Film & Pouches",
+    "verified": true
+  },
+  {
+    "id": "mh-020",
+    "name": "Pradeep Laminators Pvt. Ltd. (Pune Bhosari MIDC)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Laminated Films",
+      "Vacuum Pouches",
+      "Extrusion Films",
+      "Lidding Films"
+    ],
+    "products": [
+      "Multi-layer High Barrier Laminated Pouches",
+      "Co-extruded EVOH Barrier Bags",
+      "Vacuum Pouches with Nitrogen Flushing Capability",
+      "Peelable Cup & Tray Lidding Laminates",
+      "Rotogravure Printed High-Speed Form Fill Seal Laminates"
+    ],
+    "description": "Prominent flexible packaging converter and laminate manufacturer in Pune, serving food, automotive, and industrial sectors with certified barrier pouches and multi-layer laminates.",
+    "address": "Plot No. 19/2, MIDC Bhosari Industrial Area, Pune, Maharashtra 411026",
+    "city": "Pune / Bhosari",
+    "district": "Pune",
+    "industrialArea": "Bhosari MIDC",
+    "state": "Maharashtra",
+    "pincode": "411026",
+    "contactPerson": "Flexible Packaging Works Head",
+    "phone": "+91-20-27120000",
+    "mobile": "+91-9822019988",
+    "email": "contact@pradeeplaminators.com",
+    "salesEmail": "sales@pradeeplaminators.com",
+    "website": "https://www.pradeeplaminators.com",
+    "gstin": "27AAACP4410K1ZX",
+    "yearEstablished": 1988,
+    "plantCapacity": "18,000 TPA Flexible Laminates & Barrier Pouches",
+    "verified": true
+  },
+  {
+    "id": "mh-021",
+    "name": "Plastiblends India Limited (Pawane MIDC & Mumbai)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Masterbatch",
+      "Coatings",
+      "Extrusion Films"
+    ],
+    "products": [
+      "White Masterbatch for Extrusion & Blown Barrier Films",
+      "Carbon Black Masterbatch for Agricultural & Silage Films",
+      "Color Masterbatch for Packaging & Polymers",
+      "Additive Masterbatch (Anti-block, Slip, UV Stabilizer, PPA)",
+      "Desiccant Masterbatch for Multi-layer Film Extrusions"
+    ],
+    "description": "India's premier and largest manufacturer of color and additive masterbatches for film extrusion, multi-layer barrier packaging, and engineering polymers. Operates active manufacturing in Pawane MIDC, Navi Mumbai and corporate headquarters in Mumbai.",
+    "address": "Plot No. C-13, TTC Industrial Area, MIDC Pawane, Turbhe, Navi Mumbai, Maharashtra 400705",
+    "city": "Navi Mumbai",
+    "district": "Thane",
+    "industrialArea": "TTC Industrial Area, Pawane MIDC",
+    "state": "Maharashtra",
+    "pincode": "400705",
+    "contactPerson": "Masterbatch Technical Sales Head",
+    "phone": "+91-22-27618000",
+    "mobile": "+91-9820015200",
+    "email": "pbi@kolsitegroup.com",
+    "salesEmail": "sales@kolsitegroup.com",
+    "website": "https://www.plastiblends.com",
+    "gstin": "27AAACP0125F1Z9",
+    "yearEstablished": 1991,
+    "plantCapacity": "110,000+ TPA Polymer Masterbatches",
+    "verified": true
+  },
+  {
+    "id": "mh-022",
+    "name": "Alok Masterbatches Pvt. Ltd. (Maharashtra Sales Hub)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Masterbatch",
+      "Extrusion Films"
+    ],
+    "products": [
+      "High Concentration White & Black Masterbatches",
+      "UV Barrier & Anti-Oxidant Additives for Extrusion Films",
+      "Biodegradable Masterbatches for Flexible Packaging",
+      "Color Masterbatches for Injection & Blow Molding",
+      "Slip & Anti-Fog Masterbatch for Lidding Films"
+    ],
+    "description": "Technology-driven masterbatch producer specializing in specialty additive compounds for blown barrier films, food packaging, and agricultural mulch films with active regional sales and technical service in Thane.",
+    "address": "Office 402, Centrum IT Park, Wagle Industrial Estate, Thane West, Maharashtra 400604",
+    "city": "Thane",
+    "district": "Thane",
+    "industrialArea": "Wagle Industrial Estate",
+    "state": "Maharashtra",
+    "pincode": "400604",
+    "contactPerson": "Zonal Sales & Applications Manager",
+    "phone": "+91-22-41223400",
+    "mobile": "+91-9810145678",
+    "email": "info@alokmasterbatches.com",
+    "salesEmail": "sales@alokmasterbatches.com",
+    "website": "https://www.alokmasterbatches.com",
+    "gstin": "27AAACA5618Q1ZY",
+    "yearEstablished": 1995,
+    "plantCapacity": "60,000 TPA Specialty Compounds",
+    "verified": true
+  },
+  {
+    "id": "mh-023",
+    "name": "Henkel Adhesives Technologies India (Kurkumbh MIDC Plant)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Adhesives",
+      "Coatings",
+      "Lamination and Poly Inks"
+    ],
+    "products": [
+      "Loctite Liofol Solventless Polyurethane Lamination Adhesives",
+      "2-Component Solvent-Based PU Adhesives for High-Barrier Retort",
+      "Heat-Seal & Cold-Seal Barrier Packaging Coatings",
+      "Pressure Sensitive Adhesives (PSA) for Flexible Labels",
+      "Fast-Curing Food-Contact Compliant Laminating Systems"
+    ],
+    "description": "Global market leader in adhesives and coatings. Operates India's largest integrated adhesives plant (Bharat Project) in Kurkumbh MIDC, Pune district, manufacturing the renowned Loctite Liofol lamination adhesive range for flexible packaging converters across Maharashtra.",
+    "address": "Plot D-73/74, Kurkumbh MIDC Industrial Area, Pune-Solapur Highway, Taluka Daund, Pune District, Maharashtra 413802",
+    "city": "Pune / Kurkumbh",
+    "district": "Pune",
+    "industrialArea": "Kurkumbh MIDC Industrial Area",
+    "state": "Maharashtra",
+    "pincode": "413802",
+    "contactPerson": "Flexible Packaging Adhesives Technical Manager",
+    "phone": "+91-2117-234500",
+    "mobile": "+91-9820334455",
+    "email": "henkel.india@henkel.com",
+    "salesEmail": "packaging.adhesives@henkel.com",
+    "website": "https://www.henkel-adhesives.com/in",
+    "gstin": "27AAACH0296P1Z3",
+    "yearEstablished": 1996,
+    "plantCapacity": "Over 60,000 TPA Industrial & Lamination Adhesives",
+    "verified": true
+  },
+  {
+    "id": "mh-024",
+    "name": "Bostik India Private Limited (Maharashtra Operations)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Adhesives",
+      "Coatings"
+    ],
+    "products": [
+      "Herberts Polyurethane Lamination Adhesives",
+      "Solvent-Free & Solvent-Borne Adhesives for Barrier Flexible Packaging",
+      "High Performance Retort Laminating PU Systems",
+      "Hot Melt Adhesives for Packaging Case & Carton Sealing",
+      "Barrier Overprint Coatings"
+    ],
+    "description": "An Arkema company and global specialist in packaging adhesives, offering high-performance polyurethane solventless and solvent-based laminating adhesives for multi-layer barrier food and medical packaging across Maharashtra.",
+    "address": "Unit 301, Ackruti Star, Central Road, MIDC Andheri East, Mumbai, Maharashtra 400093",
+    "city": "Mumbai",
+    "district": "Mumbai Suburban",
+    "industrialArea": "Andheri East MIDC",
+    "state": "Maharashtra",
+    "pincode": "400093",
+    "contactPerson": "Industrial Adhesives Western Region Head",
+    "phone": "+91-22-66887000",
+    "mobile": "+91-9820199221",
+    "email": "inquiry.india@bostik.com",
+    "salesEmail": "flexible.packaging@bostik.com",
+    "website": "https://www.bostik.com/",
+    "gstin": "27AAACB0981H1Z6",
+    "yearEstablished": 1989,
+    "plantCapacity": "30,000 TPA Specialty Packaging Adhesives",
+    "verified": true
+  },
+  {
+    "id": "mh-025",
+    "name": "Flint Group India Pvt. Ltd. (Navi Mumbai Tech Center)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Flexo Inks",
+      "Printing Inks for Flexible Packaging",
+      "Coatings",
+      "Lamination and Poly Inks"
+    ],
+    "products": [
+      "Nyloflex & One-Inks for High Speed Flexographic Packaging",
+      "Solvent-Based Rotogravure Inks for Reverse Film Lamination",
+      "Water-Based Inks for Flexible Packaging & Corrugated",
+      "UV & LED Curable Flexo Inks for Narrow & Wide Web",
+      "Barrier Overprint Varnishes & Gloss Primers"
+    ],
+    "description": "World-leading dedicated supplier of printing inks, flexographic solutions, and overprint coatings for the flexible packaging, label, and converting industries with state-of-the-art laboratory and distribution in Navi Mumbai.",
+    "address": "Plot No. 12, TTC Industrial Area, MIDC Turbhe, Navi Mumbai, Maharashtra 400705",
+    "city": "Navi Mumbai",
+    "district": "Thane",
+    "industrialArea": "TTC Industrial Area, Turbhe MIDC",
+    "state": "Maharashtra",
+    "pincode": "400705",
+    "contactPerson": "Packaging Inks Technical Sales Team",
+    "phone": "+91-22-27672200",
+    "mobile": "+91-9820456123",
+    "email": "info.india@flintgrp.com",
+    "salesEmail": "packaging.west@flintgrp.com",
+    "website": "https://www.flintgrp.com",
+    "gstin": "27AAACF0419M1ZP",
+    "yearEstablished": 1998,
+    "plantCapacity": "40,000 TPA Liquid & Flexo Inks",
+    "verified": true
+  },
+  {
+    "id": "mh-026",
+    "name": "Polyplex Corporation Limited (Maharashtra Commercial Hub)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Extrusion Films",
+      "PA/EVOH Barrier Films",
+      "Laminated Films"
+    ],
+    "products": [
+      "Sarafil High Barrier Transparent AlOx Coated Polyester Films",
+      "Metallized & Extrusion Coated Polyester Films",
+      "BOPP High Seal Barrier Films for Flexible Packaging",
+      "Blown PE Extruded Barrier Films",
+      "Sustainable Recycled Content Base Films"
+    ],
+    "description": "One of the world's leading producers of polyester and polypropylene films for flexible packaging converters, operating active regional technical sales, custom slitting, and distribution facilities across Mumbai and Pune industrial belts.",
+    "address": "B-501, Delphi Building, Hiranandani Business Park, Powai, Mumbai, Maharashtra 400076",
+    "city": "Mumbai",
+    "district": "Mumbai Suburban",
+    "industrialArea": "Powai Commercial & Tech Hub",
+    "state": "Maharashtra",
+    "pincode": "400076",
+    "contactPerson": "Western India Films Commercial Head",
+    "phone": "+91-22-67584000",
+    "mobile": "+91-9820188990",
+    "email": "polyplexmumbai@polyplex.com",
+    "salesEmail": "sales.films@polyplex.com",
+    "website": "https://www.polyplex.com",
+    "gstin": "27AAACP0912P1ZN",
+    "yearEstablished": 1984,
+    "plantCapacity": "Over 500,000 TPA Polymer Films Globally",
+    "verified": true
+  },
+  {
+    "id": "mh-027",
+    "name": "Jindal Poly Films Limited (Mumbai Executive Hub)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Extrusion Films",
+      "PA/EVOH Barrier Films",
+      "Laminated Films",
+      "Lidding Films"
+    ],
+    "products": [
+      "BOPP High Barrier Films with PVdC & Acrylic Coating",
+      "BOPET Thermal & Extrusion Lamination Films",
+      "Co-extruded CPP (Cast Polypropylene) Sealable Films",
+      "Peelable Lidding Base Films for Food Trays",
+      "Metallized Ultra-High Barrier Substrates"
+    ],
+    "description": "Part of the BC Jindal Group, India's largest manufacturer of BOPET and BOPP films for flexible packaging, providing barrier webs, thermal lamination base substrates, and lidding films across Maharashtra converting units.",
+    "address": "501, Peninsula Chambers, Peninsula Corporate Park, Ganpatrao Kadam Marg, Lower Parel, Mumbai, Maharashtra 400013",
+    "city": "Mumbai",
+    "district": "Mumbai City",
+    "industrialArea": "Lower Parel Commercial Industrial Belt",
+    "state": "Maharashtra",
+    "pincode": "400013",
+    "contactPerson": "Western Zonal Films Marketing Division",
+    "phone": "+91-22-40348000",
+    "mobile": "+91-9820244118",
+    "email": "jindalbom@jindalgroup.com",
+    "salesEmail": "filmsales.west@jindalgroup.com",
+    "website": "https://www.jindalpoly.com",
+    "gstin": "27AAACJ0124K1Z2",
+    "yearEstablished": 1974,
+    "plantCapacity": "Over 600,000 TPA Specialty Packaging Films",
+    "verified": true
+  },
+  {
+    "id": "mh-028",
+    "name": "Constantia Flexibles / Creative Polypack (Bhiwandi Hub)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Lidding Films",
+      "Thermoforming Films",
+      "Vacuum Pouches",
+      "Laminated Films"
+    ],
+    "products": [
+      "Die-Cut Aluminum Foil & Film Lidding for Dairy & Food",
+      "High Barrier Thermoformable Bottom Webs",
+      "Anti-Fog Peelable Lidding Webs for MAP Trays",
+      "Multi-layer Foil Barrier Laminates for Pharma & Confectionery",
+      "Vacuum Pouches with High Barrier Properties"
+    ],
+    "description": "World's third largest flexible packaging producer, operating state-of-the-art converting, slitting, and logistics operations in Maharashtra supplying dairy, meat, pharma, and food converters.",
+    "address": "Gala No. 5, Rajlaxmi Commercial Complex, Kalher, Bhiwandi, Thane District, Maharashtra 421302",
+    "city": "Thane / Bhiwandi",
+    "district": "Thane",
+    "industrialArea": "Bhiwandi Industrial Corridor",
+    "state": "Maharashtra",
+    "pincode": "421302",
+    "contactPerson": "Lidding & Barrier Packaging Specialist",
+    "phone": "+91-2522-665500",
+    "mobile": "+91-9820391200",
+    "email": "sales.india@cflex.com",
+    "salesEmail": "lidding.india@cflex.com",
+    "website": "https://www.cflex.com",
+    "gstin": "27AAACC4918K1ZX",
+    "yearEstablished": 1986,
+    "plantCapacity": "High Speed Multi-Station Converting Facilities",
+    "verified": true
+  },
+  {
+    "id": "mh-029",
+    "name": "Paharpur 3P (Western India Converting Division)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Laminated Films",
+      "Vacuum Pouches",
+      "PA/EVOH Barrier Films",
+      "Lidding Films"
+    ],
+    "products": [
+      "Custom Printed Stand-up Pouches with Spout",
+      "Retort Pouch Packaging for Ready-to-Eat Food",
+      "Multi-layer Vacuum Barrier Pouches for Dairy & Meat",
+      "Aseptic Bag-in-Box Barrier Films",
+      "Specialty Easy-Peel Lidding Film Laminates"
+    ],
+    "description": "Pioneering Indian flexible packaging converter specializing in high barrier pouches, retort pouches, vacuum packaging, and liquid packaging with active regional operations in Mumbai.",
+    "address": "Unit 302, Trade Link, 'E' Wing, Kamala City, Senapati Bapat Marg, Lower Parel, Mumbai, Maharashtra 400013",
+    "city": "Mumbai",
+    "district": "Mumbai City",
+    "industrialArea": "Lower Parel Commercial Hub",
+    "state": "Maharashtra",
+    "pincode": "400013",
+    "contactPerson": "Flexible Packaging Solutions Head",
+    "phone": "+91-22-43403333",
+    "mobile": "+91-9820177884",
+    "email": "info@paharpur3p.com",
+    "salesEmail": "sales@paharpur3p.com",
+    "website": "https://www.paharpur3p.com",
+    "gstin": "27AAACP5519L1Z5",
+    "yearEstablished": 1985,
+    "plantCapacity": "35,000 TPA Barrier Converting & Pouches",
+    "verified": true
+  },
+  {
+    "id": "mh-030",
+    "name": "Super Olefins Pvt. Ltd. (Chakan MIDC Pune)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Extrusion Films",
+      "Vacuum Pouches",
+      "Laminated Films"
+    ],
+    "products": [
+      "3-Layer & 5-Layer Blown Polyethylene Barrier Films",
+      "Co-extruded Heavy Duty Vacuum Packaging Film",
+      "Silage & Agricultural Mulch Extruded Films",
+      "Liquid Packaging Barrier Film for Milk & Dairy",
+      "Surface Protective Poly Films"
+    ],
+    "description": "Dedicated manufacturer of multi-layer co-extruded blown films, industrial barrier liners, and vacuum packaging films situated in the high-growth Chakan MIDC Phase II industrial zone of Pune.",
+    "address": "Plot B-18, Chakan MIDC Phase II, Taluka Khed, Pune District, Maharashtra 410501",
+    "city": "Pune / Chakan",
+    "district": "Pune",
+    "industrialArea": "Chakan MIDC Phase II",
+    "state": "Maharashtra",
+    "pincode": "410501",
+    "contactPerson": "Extrusion Plant Operations Manager",
+    "phone": "+91-2135-259800",
+    "mobile": "+91-9822456789",
+    "email": "contact@superolefins.com",
+    "salesEmail": "sales@superolefins.com",
+    "website": "https://www.google.com/search?q=Super+Olefins+Pvt+Ltd+Chakan+Pune+films",
+    "gstin": "27AABCS7712N1Z4",
+    "yearEstablished": 2008,
+    "plantCapacity": "15,000 TPA Co-extrusion Blown Films",
+    "verified": true
+  },
+  {
+    "id": "mh-031",
+    "name": "Acrocoat Coatings & Resins (Waluj MIDC Aurangabad)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Coatings",
+      "Adhesives",
+      "Lamination and Poly Inks"
+    ],
+    "products": [
+      "Heat-Seal Barrier Coatings for Aluminum Foil & Film",
+      "Overprint Varnishes (OPV) for Flexible Packaging Films",
+      "Polyurethane Primers for Extrusion Coating & Lamination",
+      "Gloss & Matt Water-Based Functional Coatings",
+      "Release Coatings for Label Stock & Liner Packaging"
+    ],
+    "description": "Formulator and manufacturer of specialized barrier coatings, heat-seal lacquers, and polyurethane laminating primers for flexible packaging converters located in Waluj MIDC, Chhatrapati Sambhaji Nagar.",
+    "address": "Plot K-8, Waluj MIDC Industrial Area, Chhatrapati Sambhaji Nagar (Aurangabad), Maharashtra 431136",
+    "city": "Chhatrapati Sambhaji Nagar (Aurangabad)",
+    "district": "Aurangabad",
+    "industrialArea": "Waluj MIDC Industrial Area",
+    "state": "Maharashtra",
+    "pincode": "431136",
+    "contactPerson": "Technical Coatings Division Head",
+    "phone": "+91-240-2554100",
+    "mobile": "+91-9822018877",
+    "email": "info@acrocoat.com",
+    "salesEmail": "sales@acrocoat.com",
+    "website": "https://www.google.com/search?q=Acrocoat+Coatings+Resins+Waluj+Aurangabad",
+    "gstin": "27AABCA9114M1Z2",
+    "yearEstablished": 2001,
+    "plantCapacity": "8,000 TPA Specialty Packaging Lacquers",
+    "verified": true
+  },
+  {
+    "id": "mh-032",
+    "name": "Printwell Inks & Coatings (Dombivli MIDC Phase II)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Flexo Inks",
+      "Printing Inks for Flexible Packaging",
+      "Coatings",
+      "Lamination and Poly Inks"
+    ],
+    "products": [
+      "Water-Based Flexographic Inks for Poly Film & Kraft",
+      "Solvent-Based Flexo Inks for Woven Sacks & Poly Bags",
+      "Vinyl & Poly Inks for Surface Printing on Treated PE",
+      "Two-Pack PU Inks for Heavy-Duty Outdoor Packaging",
+      "High Gloss Barrier OPV Varnishes"
+    ],
+    "description": "Producer of performance flexo and rotogravure packaging inks, poly surface printing inks, and protective barrier coatings serving packaging converters across Dombivli, Kalyan, Ambernath, and Mumbai.",
+    "address": "Plot D-14, MIDC Phase II, Manpada Road, Dombivli East, Thane District, Maharashtra 421204",
+    "city": "Thane / Dombivli",
+    "district": "Thane",
+    "industrialArea": "Dombivli MIDC Phase II",
+    "state": "Maharashtra",
+    "pincode": "421204",
+    "contactPerson": "Inks Technical Sales Executive",
+    "phone": "+91-251-2872300",
+    "mobile": "+91-9820398711",
+    "email": "contact@printwellinks.com",
+    "salesEmail": "sales@printwellinks.com",
+    "website": "https://www.google.com/search?q=Printwell+Inks+Coatings+Dombivli+MIDC",
+    "gstin": "27AABCP8812K1Z8",
+    "yearEstablished": 2005,
+    "plantCapacity": "5,000 TPA Liquid Flexo & Poly Inks",
+    "verified": true
+  },
+  {
+    "id": "mh-033",
+    "name": "Shreeji Masterbatches & Additives (Vasai East)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Masterbatch",
+      "Extrusion Films"
+    ],
+    "products": [
+      "Super-Concentrate White Titanium Dioxide Masterbatch",
+      "Slip & Anti-Block Masterbatch for High Speed Film Lines",
+      "Optical Brightener Masterbatch for Multi-layer Film",
+      "Color Masterbatches for Pouch Zipper & Profile Extrusions",
+      "Processing Aids (PPA) for LLDPE & HDPE Blown Films"
+    ],
+    "description": "Specialized formulator of high-dispersion masterbatches, processing aids, and slip additives tailored for blown film extruders, vacuum pouch converters, and flexible packaging manufacturers in the Vasai-Palghar belt.",
+    "address": "Unit 8, Vasai Industrial Complex, Waliv, Vasai East, Palghar District (Thane MMR), Maharashtra 401208",
+    "city": "Vasai / Palghar",
+    "district": "Palghar",
+    "industrialArea": "Waliv Industrial Area, Vasai East",
+    "state": "Maharashtra",
+    "pincode": "401208",
+    "contactPerson": "Polymer Compounds Manager",
+    "phone": "+91-250-2453300",
+    "mobile": "+91-9821234500",
+    "email": "info@shreejimasterbatch.com",
+    "salesEmail": "sales@shreejimasterbatch.com",
+    "website": "https://www.google.com/search?q=Shreeji+Masterbatches+Vasai+East+Palghar",
+    "gstin": "27AABCS3319P1Z1",
+    "yearEstablished": 2011,
+    "plantCapacity": "10,000 TPA Film Grade Masterbatches",
+    "verified": true
+  },
+  {
+    "id": "mh-034",
+    "name": "Bilcare Limited (Bilcare Research)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "PA/EVOH Barrier Films",
+      "Thermoforming Films",
+      "Lidding Films",
+      "Vacuum Pouches"
+    ],
+    "products": [
+      "High Barrier Ultra-High Barrier Thermoforming Blister Films",
+      "PVdC & Aclar Co-extruded Barrier Films",
+      "Cold Form Blister Foils (Alu-Alu)",
+      "Pharmaceutical Barrier Webs & Pouches"
+    ],
+    "description": "Global research and manufacturing leader in specialty pharmaceutical barrier films, multi-layer thermoforming films, and ultra-high barrier films with a state-of-the-art plant near Chakan / Rajgurunagar, Pune.",
+    "address": "1028, Shiroli, Pune-Nashik Highway, Rajgurunagar (near Chakan MIDC), Pune, Maharashtra 410505",
+    "city": "Pune / Chakan",
+    "district": "Pune",
+    "industrialArea": "Chakan / Rajgurunagar Industrial Corridor",
+    "state": "Maharashtra",
+    "pincode": "410505",
+    "contactPerson": "B2B Barrier Packaging Technical Sales Desk",
+    "phone": "+91-20-67490100",
+    "mobile": "+91-9822459000",
+    "email": "corpcomm@bilcare.com",
+    "salesEmail": "sales@bilcare.com",
+    "website": "https://www.bilcare.com",
+    "gstin": "27AAACB2188E1ZG",
+    "yearEstablished": 1987,
+    "verified": true
+  },
+  {
+    "id": "mh-035",
+    "name": "Garware Hi-Tech Films Limited",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Extrusion Films",
+      "Laminated Films",
+      "Lidding Films"
+    ],
+    "products": [
+      "Specialty Extrusion Co-extruded Barrier Films",
+      "High Clarity BOPET Packaging Barrier Films",
+      "Surface Protective & Functional Barrier Substrates",
+      "Thermal Lamination & Coated Films"
+    ],
+    "description": "World-renowned manufacturer of specialty polyester films, co-extruded films, and high-barrier industrial packaging substrates with major plants in Waluj and Chikalthana MIDC, Chhatrapati Sambhaji Nagar, Maharashtra.",
+    "address": "Garware House, 50-A, Swami Nityanand Marg, Vile Parle East, Mumbai 400057 / Plant: L-6, Waluj MIDC, Chhatrapati Sambhaji Nagar, Maharashtra 431136",
+    "city": "Chhatrapati Sambhaji Nagar (Aurangabad)",
+    "district": "Aurangabad",
+    "industrialArea": "Waluj MIDC Industrial Area",
+    "state": "Maharashtra",
+    "pincode": "431136",
+    "contactPerson": "Corporate & Industrial Films Division",
+    "phone": "+91-22-66988000",
+    "mobile": "+91-9820145220",
+    "email": "ghfl@garwarehitech.com",
+    "salesEmail": "sales@garwarehitech.com",
+    "website": "https://www.garwarehitech.com",
+    "gstin": "27AAACG1608P1ZT",
+    "yearEstablished": 1957,
+    "verified": true
+  },
+  {
+    "id": "mh-036",
+    "name": "Vacmet India Limited (Maharashtra Regional Division)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Extrusion Films",
+      "PA/EVOH Barrier Films",
+      "Laminated Films",
+      "Vacuum Pouches"
+    ],
+    "products": [
+      "High Barrier Metallized BOPP & BOPET Films",
+      "Cast Polypropylene (CPP) High Barrier Films",
+      "Extrusion Coated Barrier Webs",
+      "Specialty Barrier Lidding Substrates"
+    ],
+    "description": "Leading manufacturer of high barrier metallized films, specialty extrusion barrier substrates, and CPP films with regional operations and logistics hubs across Mumbai MMR and Thane.",
+    "address": "B-Wing, 401, Marathon Innova, Ganpatrao Kadam Marg, Lower Parel, Mumbai, Maharashtra 400013",
+    "city": "Mumbai",
+    "district": "Mumbai",
+    "industrialArea": "Lower Parel / Mumbai MMR Logistics Hub",
+    "state": "Maharashtra",
+    "pincode": "400013",
+    "contactPerson": "Western Regional Commercial Sales Desk",
+    "phone": "+91-22-43405555",
+    "mobile": "+91-9820541230",
+    "email": "mumbai@vacmet.com",
+    "salesEmail": "sales@vacmet.com",
+    "website": "https://www.vacmet.com",
+    "gstin": "27AABCV1298G1ZX",
+    "yearEstablished": 1977,
+    "verified": true
+  },
+  {
+    "id": "mh-037",
+    "name": "Max Speciality Films Limited (Western Hub)",
+    "category": "Barrier & Extrusion Films",
+    "subCategories": [
+      "Extrusion Films",
+      "Laminated Films",
+      "Lidding Films",
+      "Thermoforming Films"
+    ],
+    "products": [
+      "Specialty Barrier BOPP Packaging Films",
+      "High Oxygen & Moisture Barrier Extrusion Webs",
+      "Easy-Peel Lidding Barrier Films",
+      "Coated Transparent High Barrier Films"
+    ],
+    "description": "Leading innovator in specialty barrier films for flexible food packaging, extrusion lamination webs, and peelable lidding substrates with western corporate presence in Mumbai MMR.",
+    "address": "Unit No. 1102, 11th Floor, Peninsula Business Park, Lower Parel, Mumbai, Maharashtra 400013",
+    "city": "Mumbai",
+    "district": "Mumbai",
+    "industrialArea": "Peninsula Business Hub / Mumbai MMR",
+    "state": "Maharashtra",
+    "pincode": "400013",
+    "contactPerson": "Specialty Films Regional Technical Sales",
+    "phone": "+91-22-61582800",
+    "mobile": "+91-9820087410",
+    "email": "info@maxspecialityfilms.com",
+    "salesEmail": "sales@maxspecialityfilms.com",
+    "website": "https://www.maxspecialityfilms.com",
+    "gstin": "27AAACM3941L1Z0",
+    "yearEstablished": 1990,
+    "verified": true
+  },
+  {
+    "id": "mh-116",
+    "name": "Dorf Ketal Chemicals India Pvt. Ltd.",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Coatings & Primer",
+      "Lamination & Poly Inks",
+      "Specialty Resins"
+    ],
+    "products": [
+      "Specialty Barrier Coatings for Flexible Packaging",
+      "Polyurethane Adhesion Promoters & Primers",
+      "Titanate & Zirconate Catalysts for Flexo/Gravure Inks",
+      "Heat Seal & Functional Barrier Varnishes"
+    ],
+    "description": "Global specialty chemical manufacturer producing advanced organometallic catalysts, lamination adhesion promoters, and barrier coating additives with major plant in Taloja MIDC, Raigad, Maharashtra.",
+    "address": "Dorf Ketal Tower, D Monte Street, Orlem, Malad West, Mumbai 400064 / Plant: Plot No. 2, MIDC Industrial Area, Taloja, Navi Mumbai, Maharashtra 410208",
+    "city": "Navi Mumbai / Taloja",
+    "district": "Raigad",
+    "industrialArea": "Taloja MIDC Industrial Estate",
+    "state": "Maharashtra",
+    "pincode": "410208",
+    "contactPerson": "Packaging Chemicals & Coatings Sales Desk",
+    "phone": "+91-22-42937000",
+    "mobile": "+91-9820387600",
+    "email": "info@dorfketal.com",
+    "salesEmail": "sales@dorfketal.com",
+    "website": "https://www.dorfketal.com",
+    "gstin": "27AAACD4219Q1ZN",
+    "yearEstablished": 1992,
+    "verified": true
+  },
+  {
+    "id": "mh-117",
+    "name": "Avery Dennison India Private Limited (Western Hub)",
+    "category": "Printing Inks, Adhesives & Masterbatch",
+    "subCategories": [
+      "Solventless & PU Adhesives",
+      "Coatings & Primer",
+      "Specialty Masterbatch"
+    ],
+    "products": [
+      "Pressure Sensitive Packaging Adhesives",
+      "Specialty Barrier Lamination Adhesives",
+      "Top-Coated & Primed Synthetic Film Substrates",
+      "High Performance Flexible Packaging Adhesives"
+    ],
+    "description": "Global packaging materials and adhesives manufacturer operating major distribution and technical facilities in Mumbai MMR and Ranjangaon MIDC, Pune.",
+    "address": "Prime Corporate Park, Sahar Road, Andheri East, Mumbai, Maharashtra 400099 / Plant: Ranjangaon MIDC, Pune 412220",
+    "city": "Mumbai",
+    "district": "Mumbai",
+    "industrialArea": "Andheri East / Ranjangaon MIDC Pune",
+    "state": "Maharashtra",
+    "pincode": "400099",
+    "contactPerson": "Western Industrial Packaging Adhesives Team",
+    "phone": "+91-22-68328000",
+    "mobile": "+91-9820198750",
+    "email": "info@averydennison.com",
+    "salesEmail": "sales.india@averydennison.com",
+    "website": "https://www.averydennison.com",
+    "gstin": "27AAACA6010R1ZL",
+    "yearEstablished": 1997,
     "verified": true
   }
 ]

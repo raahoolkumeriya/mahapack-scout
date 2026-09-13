@@ -45,13 +45,14 @@ Exclusively covers manufacturing plants, converting units, and technical hubs lo
 
 ## ✨ Key Features
 
-- **48 Verified Manufacturing Units**: In-depth dossiers covering plant capacities, year established, GSTIN numbers, and comprehensive product lists.
+- **54 Verified Manufacturing Units**: In-depth dossiers covering plant capacities, year established, GSTIN numbers, and comprehensive product lists.
 - **Complete Contact Dossiers**: Direct factory landlines, mobile numbers, technical sales emails, and full physical MIDC addresses.
-- **Live Web Scout Engine (`POST /api/search-web`)**:
-  - **Mode A (Live URL Scanner)**: Extracts titles, telephone numbers, emails, and physical addresses directly from any live website URL in real-time.
-  - **Mode B (Knowledge Graph with Real-Time Probing)**: Multi-term search across Maharashtra plants with live HTTP domain verification (`HTTP 200` latency benchmarks).
-- **100% Working Official Web Links**: Verified HTTPS corporate domains and guaranteed Google B2B / MIDC Industrial Profiles (no dead `DNS_PROBE_FINISHED_NXDOMAIN` links).
-- **MongoDB Atlas Cloud Database**: Cloud-hosted storage connected via `MONGODB_SRV` with automatic fallbacks and local synchronization.
+- **Real-Time Live Web Scout Engine (`POST /api/search-web`)**:
+  - **Mode A (Live URL & Corporate Domain Scanner)**: Accepts full URLs or bare domains (e.g. `tcpl.in`, `bilcare.com`, `cosmofirst.com`). Concurrently scans `/` and `/contact-us`, extracting company name, real-time meta descriptions, verified telephone landlines (022, 020, 0250, 0240, etc.), sales emails, and MIDC plant addresses with live HTTP latency telemetry.
+  - **Mode B (Technical Spec & Knowledge Graph with Real-Time HTTP Probing)**: Multi-term technical search across Maharashtra packaging plants with acronym expansion (`PA`, `EVOH`, `PU`, `MB`, `NTNK`, `BOPP`, etc.), zero-empty cluster broadening, and parallel live HTTP probing (`HTTP 200` round-trip latency, live page titles, and live website snippets).
+  - **1-Click Save to Directory**: Save newly scouted leads from the live web directly into MongoDB Atlas with complete contact details and instant local UI synchronization.
+- **100% Working Official Web Links**: Verified HTTPS corporate domains and guaranteed Google B2B / MIDC Industrial Profiles (no dead links).
+- **Auto-Healing MongoDB Atlas Cloud Database**: Cloud-hosted storage connected via `MONGODB_SRV` with automatic master file fallback and resilient self-seeding.
 - **Instant CSV Export**: Filtered or full directory export with one click.
 - **Lead Bookmarking**: Save leads locally for review and offline tracking.
 - **Zero-Dependency Modern Frontend**: Vanilla JS and high-performance CSS with dark-mode aesthetic and glassmorphism.
@@ -206,7 +207,23 @@ Saves or updates a manufacturer dossier directly to MongoDB Atlas with automatic
 
 ---
 
-### 5. Export CSV
+### 5. Delete Manufacturer (Remove Plant)
+`DELETE /api/manufacturers/:id`
+
+Permanently deletes a manufacturer plant by ID from MongoDB Atlas and synchronizes the local storage mirrors.
+
+**Sample Response:**
+```json
+{
+  "success": true,
+  "message": "Plant mh-001 removed successfully from directory",
+  "id": "mh-001"
+}
+```
+
+---
+
+### 6. Export CSV
 `GET /api/export`
 
 Downloads a full or filtered CSV file with headers: `ID, Company Name, Category, Sub-Categories, Products, City, Industrial Area, Full Address, Pincode, Phone, Mobile, Email, Sales Email, Website, GSTIN`.

@@ -80,6 +80,7 @@ const DOM = {
   linkWebsite: document.getElementById('linkWebsite'),
   modalWebsiteRow: document.getElementById('modalWebsiteRow'),
   btnModalBookmark: document.getElementById('btnModalBookmark'),
+  btnModalDelete: document.getElementById('btnModalDelete'),
 
   // Saved Leads
   savedDrawer: document.getElementById('savedDrawer'),
@@ -378,6 +379,9 @@ function renderCards(list) {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             </a>
           ` : ''}
+          <button class="card-delete-btn" title="Delete plant (Not interested)" onclick="confirmDeletePlant('${item.id}', '${escapeHtml(item.name).replace(/'/g, "\\'")}', event)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/></svg>
+          </button>
         </div>
       </article>
     `;
@@ -591,6 +595,14 @@ function openDetailsModal(id) {
       };
     }
 
+    // Delete in modal
+    const btnDelete = DOM.btnModalDelete || document.getElementById('btnModalDelete');
+    if (btnDelete) {
+      btnDelete.onclick = () => {
+        confirmDeletePlant(item.id, item.name);
+      };
+    }
+
     const modal = DOM.detailsModal || document.getElementById('detailsModal');
     if (modal) {
       modal.style.display = 'flex';
@@ -752,10 +764,16 @@ function renderScoutResults(results, query, city) {
           <div class="scout-result-header">
             <div>
               <div class="scout-badge-row">
-                <span class="scout-source-badge ${r.source && r.source.includes('Verified') ? 'source-verified' : 'source-live'}">
+                <span class="scout-source-badge ${r.source && r.source.includes('Live Web') ? 'source-live' : 'source-verified'}">
                   ${escapeHtml(r.source || 'Verified MH Supplier')}
                 </span>
                 <span class="scout-city-badge">📍 ${escapeHtml(detectedCity)} &bull; ${escapeHtml(industrialArea)}</span>
+                ${r.liveWebData && r.liveWebData.isLive ? `
+                  <span class="live-telemetry-pill">
+                    <span class="live-pulse-dot"></span>
+                    <span>LIVE ${r.liveWebData.latencyMs}ms</span>
+                  </span>
+                ` : ''}
               </div>
               <h4 class="scout-result-title">${escapeHtml(r.name)}</h4>
             </div>
@@ -764,6 +782,13 @@ function renderScoutResults(results, query, city) {
               <span>+ Save to Directory</span>
             </button>
           </div>
+
+          ${r.liveWebData && r.liveWebData.metaDescription ? `
+            <div class="live-meta-box">
+              <strong>⚡ Real-Time Corporate Website Extract:</strong>
+              <span>"${escapeHtml(r.liveWebData.metaDescription)}"</span>
+            </div>
+          ` : ''}
 
           <p class="scout-result-snippet">${escapeHtml(r.snippet || '')}</p>
 
@@ -1011,6 +1036,69 @@ function exportSavedLeads() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// PLANT DELETION (NOT INTERESTED)
+// ==========================================================================
+window.confirmDeletePlant = async function(id, name, event) {
+  if (event) {
+    event.stopPropagation();
+  }
+
+  const confirmed = window.confirm(`Are you sure you want to remove this plant from the directory?\n\nCompany: ${name}\n\nThis will permanently delete this plant from MongoDB Atlas.`);
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch(`/api/manufacturers/${encodeURIComponent(id)}`, {
+      method: 'DELETE'
+    });
+    const data = await res.json();
+    if (data.success) {
+      // Remove from local memory state
+      state.allManufacturers = state.allManufacturers.filter(m => m.id !== id);
+      state.filteredManufacturers = state.filteredManufacturers.filter(m => m.id !== id);
+
+      // Remove from bookmarks if saved
+      if (state.savedLeadIds.includes(id)) {
+        state.savedLeadIds = state.savedLeadIds.filter(savedId => savedId !== id);
+        localStorage.setItem('mahapack_saved_leads', JSON.stringify(state.savedLeadIds));
+        updateSavedBadge();
+      }
+
+      // Close details modal if open for this plant
+      if (state.activeLeadForModal && state.activeLeadForModal.id === id) {
+        closeDetailsModal();
+      }
+
+      // Refresh UI and dashboard metrics
+      filterAndRender();
+      fetchStats();
+
+      // Show toast notification
+      showToast(`Removed "${name}" from directory`, 'success');
+    } else {
+      alert(`Could not delete plant: ${data.error || 'Server error'}`);
+    }
+  } catch (err) {
+    console.error('Failed to delete plant:', err);
+    alert('Failed to delete plant. Check server connection.');
+  }
+};
+
+function showToast(message, type = 'success') {
+  const toast = document.getElementById('toastNotification');
+  const msgEl = document.getElementById('toastMessage');
+  if (!toast || !msgEl) return;
+
+  msgEl.textContent = message;
+  toast.className = `toast-notification ${type}`;
+  toast.style.display = 'flex';
+
+  if (window._toastTimeout) clearTimeout(window._toastTimeout);
+  window._toastTimeout = setTimeout(() => {
+    toast.style.display = 'none';
+  }, 4000);
 }
 
 // ==========================================================================
