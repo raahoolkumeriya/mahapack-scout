@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MahaPack Scout | Maharashtra Packaging Films, Inks & Adhesives Intelligence</title>
+  <meta name="description" content="High-speed intelligence platform and live web scout for Extrusion films, PA/EVOH barrier films, vacuum pouches, thermoforming films, flexible packaging inks, adhesives, and masterbatches across Maharashtra.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <span class="logo-symbol">⚡</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">
+            <span class="brand-prefix">MAHA</span><span class="brand-highlight">PACK</span> <span class="brand-badge">SCOUT</span>
+          </div>
+          <div class="brand-sub">Maharashtra Industrial Packaging & Inks Intelligence</div>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="db-badge" id="dbStatusBadge" title="Connected to MongoDB Atlas using MONGODB_SRV">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span id="dbStatusText">MongoDB Atlas: Connected</span>
+        </div>
+
+        <div class="region-badge">
+          <span class="pulse-dot"></span>
+          <span>Region: Maharashtra Only (MIDC Zones)</span>
+        </div>
+
+        <button id="btnOpenWebScout" class="btn btn-scout" title="Search Live Web for fresh Maharashtra suppliers">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <span>Live Web Scout</span>
+          <span class="scout-badge">LIVE</span>
+        </button>
+
+        <button id="btnOpenSaved" class="btn btn-secondary" title="View Saved Bookmarks">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+          <span>Saved</span>
+          <span id="savedCountBadge" class="counter-badge">0</span>
+        </button>
+
+        <button id="btnExportCsv" class="btn btn-outline" title="Export Current Results to CSV">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Export CSV</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO & STATS SECTION -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-pills">
+          <span class="pill-tag"><span class="pill-icon">📦</span> Domain 1: Extrusion & High-Barrier Films</span>
+          <span class="pill-tag"><span class="pill-icon">🧪</span> Domain 2: Flexible Inks, Adhesives & Masterbatches</span>
+        </div>
+        <h1 class="hero-heading">Verified Manufacturers & B2B Web Scout in <span class="gradient-text">Maharashtra</span></h1>
+        <p class="hero-lead">
+          Direct phone numbers, plant addresses, MIDC zones, and sales desks for 
+          <strong>PA/EVOH barrier films, vacuum pouches, thermoforming webs, lidding films</strong> and 
+          <strong>gravure/flexo inks, poly inks, lamination adhesives, and masterbatches</strong>.
+        </p>
+      </div>
+
+      <!-- METRICS BAR -->
+      <div class="stats-dashboard">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <div class="stat-data">
+            <div class="stat-number" id="statTotal">--</div>
+            <div class="stat-label">Verified Units in MH</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper emerald">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <div class="stat-data">
+            <div class="stat-number" id="statBarrier">--</div>
+            <div class="stat-label">Extrusion & Barrier Films</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+          </div>
+          <div class="stat-data">
+            <div class="stat-number" id="statInks">--</div>
+            <div class="stat-label">Inks, Adhesives & MB</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper purple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="stat-data">
+            <div class="stat-number" id="statClusters">--</div>
+            <div class="stat-label">MIDC Clusters Covered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER INTERFACE -->
+  <main class="main-content">
+    <div class="controls-panel">
+      <!-- MAIN SEARCH BAR -->
+      <div class="search-bar-wrapper">
+        <div class="search-input-box">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search company, product (e.g. EVOH barrier, vacuum pouch, thermoforming, flexo inks, PU adhesive)..." 
+            autocomplete="off"
+          />
+          <button id="btnClearSearch" class="btn-clear" title="Clear Search" style="display: none;">&times;</button>
+        </div>
+        <button id="btnTriggerLiveScout" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Web Scout Search</span>
+        </button>
+      </div>
+
+      <!-- DOMAIN SELECTOR TABS -->
+      <div class="domain-tabs">
+        <button class="domain-tab active" data-domain="all">
+          <span>All Sectors</span>
+          <span class="tab-badge" id="badgeAll">--</span>
+        </button>
+        <button class="domain-tab" data-domain="Barrier & Extrusion Films">
+          <span>📦 Barrier & Extrusion Films</span>
+          <span class="tab-badge" id="badgeBarrier">--</span>
+        </button>
+        <button class="domain-tab" data-domain="Printing Inks, Adhesives & Masterbatch">
+          <span>🧪 Inks, Coatings, Adhesives & Masterbatch</span>
+          <span class="tab-badge" id="badgeInks">--</span>
+        </button>
+      </div>
+
+      <!-- ADVANCED FILTERS -->
+      <div class="filters-row">
+        <!-- Sub-Category Filter -->
+        <div class="filter-item">
+          <label for="subCategorySelect">Product Specialization:</label>
+          <select id="subCategorySelect">
+            <option value="all">All Product Sub-Categories</option>
+            <optgroup label="Films & Pouches (Domain 1)">
+              <option value="PA/EVOH Barrier Films">PA/EVOH Barrier Films (7-9 Layer)</option>
+              <option value="Extrusion Films">Multilayer Blown/Cast Extrusion Films</option>
+              <option value="Laminated Films">Barrier Laminated Films</option>
+              <option value="Vacuum Pouches">Co-extruded & Laminated Vacuum Pouches</option>
+              <option value="Lidding Films">Peelable & Anti-Fog Lidding Films</option>
+              <option value="Thermoforming Films">Thermoforming Bottom & Top Webs</option>
+            </optgroup>
+            <optgroup label="Inks, Adhesives & Chemistry (Domain 2)">
+              <option value="Printing Inks for Flexible Packaging">Flexible Packaging Gravure Inks</option>
+              <option value="Flexo Inks">Flexographic Printing Inks</option>
+              <option value="Lamination and Poly Inks">Lamination & Poly Inks (NTNK / PU)</option>
+              <option value="Adhesives">PU Lamination Adhesives (Solventless/SB)</option>
+              <option value="Coatings">Barrier, Heat-Seal & OPV Coatings</option>
+              <option value="Masterbatch">White, Black, Color & Additive Masterbatch</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Maharashtra MIDC Cluster Filter -->
+        <div class="filter-item">
+          <label for="citySelect">Maharashtra MIDC Cluster:</label>
+          <select id="citySelect">
+            <option value="all">All Maharashtra Industrial Hubs</option>
+            <option value="Mumbai">Mumbai MMR & Suburbs</option>
+            <option value="Pune">Pune (Chakan, Bhosari, Kurkumbh)</option>
+            <option value="Thane">Thane & Bhiwandi</option>
+            <option value="Navi Mumbai">Navi Mumbai (TTC, Turbhe, Mahape, Rabale)</option>
+            <option value="Tarapur">Tarapur MIDC / Boisar</option>
+            <option value="Aurangabad">Chhatrapati Sambhaji Nagar (Waluj MIDC)</option>
+            <option value="Vasai">Vasai-Virar / Palghar</option>
+            <option value="Ambernath">Ambernath & Dombivli MIDC</option>
+            <option value="Khopoli">Khopoli & Taloja (Raigad)</option>
+            <option value="Jalgaon">Jalgaon MIDC</option>
+          </select>
+        </div>
+
+        <!-- Sort Order -->
+        <div class="filter-item sort-item">
+          <label for="sortSelect">Sort By:</label>
+          <select id="sortSelect">
+            <option value="name-asc">Company Name (A - Z)</option>
+            <option value="city-asc">City / Industrial Cluster</option>
+            <option value="established-desc">Experience (Oldest First)</option>
+          </select>
+        </div>
+
+        <button id="btnResetFilters" class="btn-text-link" title="Reset all applied filters">Reset Filters</button>
+      </div>
+
+      <!-- ACTIVE FILTER TAGS -->
+      <div id="activeTagsContainer" class="active-tags-row"></div>
+    </div>
+
+    <!-- RESULTS SECTION -->
+    <div class="results-header">
+      <div class="results-count-title">
+        Showing <span id="resultsCount">0</span> Verified Maharashtra Manufacturers
+      </div>
+      <div class="view-actions">
+        <button id="btnQuickPrint" class="btn btn-sm btn-outline" title="Print this supplier list">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Print Summary</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MANUFACTURERS GRID -->
+    <div id="manufacturersGrid" class="cards-grid">
+      <!-- Rendered dynamically by app.js -->
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state" style="display: none;">
+      <div class="empty-icon">🔍</div>
+      <h3>No Manufacturers Found In Current Filter</h3>
+      <p>Try clearing your filters or click below to launch the Live Web Scout to discover new suppliers in Maharashtra.</p>
+      <button class="btn btn-primary" onclick="openWebScout()">Launch Live Web Scout</button>
+    </div>
+  </main>
+
+  <!-- LIVE WEB SCOUT MODAL / DRAWER -->
+  <div id="webScoutModal" class="modal-overlay" style="display: none;">
+    <div class="modal-container scout-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="scout-pulsing-icon">
+            <span class="radar-pulse"></span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <h3>Live Maharashtra Web Scout & Lead Extractor</h3>
+            <p class="modal-subtitle">Directly scans live B2B indices & web pages for phone numbers, emails, and MIDC addresses in Maharashtra.</p>
+          </div>
+        </div>
+        <button id="btnCloseWebScout" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Scout Query Form -->
+        <div class="scout-search-panel">
+          <div class="scout-inputs">
+            <div class="scout-input-field">
+              <label>Search Term / Product Spec</label>
+              <input type="text" id="scoutQueryInput" placeholder="e.g. PA EVOH 7 layer barrier film, thermoforming webs, flexo inks, solventless PU adhesive..." />
+            </div>
+            <div class="scout-select-field">
+              <label>Maharashtra Target Area</label>
+              <select id="scoutCityInput">
+                <option value="Maharashtra">Anywhere in Maharashtra</option>
+                <option value="Pune Chakan">Pune (Chakan / Bhosari MIDC)</option>
+                <option value="Mumbai MMR">Mumbai MMR & Thane</option>
+                <option value="Tarapur Boisar">Tarapur MIDC (Palghar)</option>
+                <option value="Aurangabad Waluj">Chhatrapati Sambhaji Nagar (Waluj)</option>
+                <option value="Navi Mumbai TTC">Navi Mumbai (TTC / Turbhe / Rabale)</option>
+                <option value="Vasai Palghar">Vasai / Palghar</option>
+                <option value="Ambernath Dombivli">Ambernath / Dombivli MIDC</option>
+              </select>
+            </div>
+            <button id="btnExecuteScout" class="btn btn-primary scout-btn-run">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Scan Web</span>
+            </button>
+          </div>
+
+          <!-- Quick Scout Query Chips -->
+          <div class="quick-scout-chips">
+            <span class="chips-label">Quick Scans:</span>
+            <button class="chip-btn" data-query="7 layer PA EVOH barrier film manufacturer" data-city="Pune Chakan">7-Layer EVOH Film Pune</button>
+            <button class="chip-btn" data-query="vacuum pouches manufacturer contact" data-city="Tarapur Boisar">Vacuum Pouches Tarapur</button>
+            <button class="chip-btn" data-query="thermoforming lidding films factory address" data-city="Mumbai MMR">Thermoforming Lidding Mumbai</button>
+            <button class="chip-btn" data-query="flexo inks for flexible packaging manufacturer" data-city="Vasai Palghar">Flexo Inks Vasai</button>
+            <button class="chip-btn" data-query="solventless PU lamination adhesives manufacturer" data-city="Ambernath Dombivli">Solventless PU Adhesives</button>
+            <button class="chip-btn" data-query="color additive masterbatch for extrusion films" data-city="Navi Mumbai TTC">Masterbatch Navi Mumbai</button>
+          </div>
+        </div>
+
+        <!-- Scanner Loading State -->
+        <div id="scoutLoading" class="scout-loading" style="display: none;">
+          <div class="radar-scan-box">
+            <div class="radar-sweep"></div>
+            <div class="radar-grid"></div>
+          </div>
+          <div class="scout-status-text">
+            <span id="scoutStatusMessage">Querying live web pages in Maharashtra industrial zones...</span>
+            <span class="scout-status-sub">Extracting phone numbers (+91, 022, 020), emails, and MIDC addresses...</span>
+          </div>
+        </div>
+
+        <!-- Scout Results Container -->
+        <div id="scoutResultsContainer" class="scout-results-list">
+          <div class="scout-welcome">
+            <div class="welcome-icon">🌐</div>
+            <h4>Ready to Scan the Web</h4>
+            <p>Enter a specialized search query above or click any of the Quick Scans to extract live leads with validated phone numbers and physical factory addresses in Maharashtra.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPLIER DETAILS MODAL -->
+  <div id="detailsModal" class="modal-overlay" style="display: none;">
+    <div class="modal-container details-modal">
+      <div class="modal-header">
+        <div>
+          <span class="detail-category-badge" id="modalCategoryBadge">Category</span>
+          <h2 id="modalCompanyName">Company Name</h2>
+          <div class="modal-city-row" id="modalLocationBadge">City, MIDC</div>
+        </div>
+        <button id="btnCloseDetails" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body modal-grid-layout">
+        <!-- Left Column: Products & Description -->
+        <div class="modal-col-main">
+          <div class="modal-section">
+            <h4 class="section-title">Overview & Manufacturing Profile</h4>
+            <p id="modalDescription" class="modal-desc-text"></p>
+          </div>
+
+          <div class="modal-section">
+            <h4 class="section-title">Products & Specialized Capabilities</h4>
+            <div id="modalProductsList" class="modal-tags-wrap"></div>
+          </div>
+
+          <div class="modal-section">
+            <h4 class="section-title">Plant & Industrial Metadata</h4>
+            <div class="metadata-grid">
+              <div class="meta-card">
+                <span class="meta-label">Established</span>
+                <span class="meta-val" id="modalYear">--</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Plant Capacity</span>
+                <span class="meta-val" id="modalCapacity">--</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">Maharashtra GSTIN</span>
+                <span class="meta-val code-font" id="modalGstin">--</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-label">MIDC Zone</span>
+                <span class="meta-val" id="modalMidc">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Direct Contact Hub -->
+        <div class="modal-col-sidebar">
+          <div class="contact-hub-card">
+            <h4 class="hub-title">Contact & Communication</h4>
+
+            <div class="contact-hub-item">
+              <span class="hub-label">Contact Person / Desk</span>
+              <span class="hub-val" id="modalContactPerson">--</span>
+            </div>
+
+            <div class="contact-hub-item">
+              <span class="hub-label">Direct Phone / Landline</span>
+              <div class="hub-action-row">
+                <span class="hub-val code-font" id="modalPhone">--</span>
+                <a id="linkCallPhone" href="#" class="btn-micro">Call</a>
+              </div>
+            </div>
+
+            <div class="contact-hub-item">
+              <span class="hub-label">Mobile / WhatsApp</span>
+              <div class="hub-action-row">
+                <span class="hub-val code-font" id="modalMobile">--</span>
+                <a id="linkCallMobile" href="#" class="btn-micro">Call</a>
+                <a id="linkWhatsapp" href="#" target="_blank" class="btn-micro btn-wa">WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="contact-hub-item">
+              <span class="hub-label">Official Sales & Enquiry Email</span>
+              <div class="hub-action-row">
+                <span class="hub-val code-font" id="modalEmail">--</span>
+                <a id="linkSendEmail" href="#" class="btn-micro">Email</a>
+              </div>
+            </div>
+
+            <div class="contact-hub-item">
+              <span class="hub-label">Factory / Office Address (Maharashtra)</span>
+              <p class="hub-address-text" id="modalAddress">--</p>
+              <a id="linkGoogleMaps" href="#" target="_blank" class="btn btn-outline btn-block mt-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Navigate on Google Maps</span>
+              </a>
+            </div>
+
+            <div class="contact-hub-item" id="modalWebsiteRow">
+              <div class="hub-label-row">
+                <span class="hub-label" id="modalWebsiteLabel">Official Web Presence</span>
+                <span class="hub-type-badge" id="modalWebsiteType">Verified Web</span>
+              </div>
+              <div class="website-btn-group">
+                <a id="linkWebsite" href="#" target="_blank" class="btn btn-primary btn-sm btn-block">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  <span id="linkWebsiteText">Visit Official Website &rarr;</span>
+                </a>
+                <a id="linkSearchCompany" href="#" target="_blank" class="btn btn-secondary btn-sm btn-block mt-2" title="Search Company on Google">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <span>Google Company Search &rarr;</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="hub-footer-actions">
+              <button id="btnModalBookmark" class="btn btn-secondary btn-block">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+                <span>Bookmark Lead</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVED LEADS DRAWER -->
+  <div id="savedDrawer" class="drawer-overlay" style="display: none;">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+          <h3>Saved Maharashtra Leads (<span id="savedDrawerCount">0</span>)</h3>
+        </div>
+        <button id="btnCloseSavedDrawer" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="drawer-actions">
+        <button id="btnExportSavedCsv" class="btn btn-sm btn-primary">Export Saved to CSV</button>
+        <button id="btnClearAllSaved" class="btn btn-sm btn-outline">Clear All</button>
+      </div>
+      <div id="savedListContainer" class="drawer-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <strong>MahaPack Scout Platform</strong> &bull; Specialized B2B Supplier Intelligence for Barrier Films, Extrusions, Flexible Inks, Adhesives & Masterbatches.
+      </div>
+      <div class="footer-right">
+        Coverage: <span>Chakan &bull; Waluj &bull; Tarapur &bull; TTC Thane &bull; Kurkumbh &bull; Ambernath &bull; Mumbai</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
