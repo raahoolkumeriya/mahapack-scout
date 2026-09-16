@@ -1,6 +1,6 @@
 /**
- * MAHAPACK SCOUT - APPLICATION JAVASCRIPT
- * High-speed reactive directory, live B2B web scout, contact extractor, and export manager.
+ * INDIAPACK SCOUT - APPLICATION JAVASCRIPT
+ * High-speed reactive directory, live Pan-India B2B web scout, contact extractor, and export manager.
  */
 
 // Application State
@@ -8,25 +8,133 @@ const state = {
   allManufacturers: [],
   filteredManufacturers: [],
   savedLeadIds: JSON.parse(localStorage.getItem('mahapack_saved_leads') || '[]'),
+  selectedState: 'all',
   currentDomain: 'all',
   currentSubCategory: 'all',
   currentCity: 'all',
+  currentEaSector: 'all',
   searchQuery: '',
   sortBy: 'name-asc',
   activeLeadForModal: null,
   isScanning: false
 };
 
+// Clusters by State/UT for dynamic dropdown filtering
+const CLUSTERS_BY_STATE = {
+  all: [
+    { value: 'all', label: 'All Industrial Clusters' },
+    { value: 'Mahad', label: 'Mahad MIDC (Acetyls Hub, Maharashtra)' },
+    { value: 'Lote Parshuram', label: 'Lote Parshuram MIDC (Maharashtra)' },
+    { value: 'Barnala', label: 'Barnala (IOLCP Chemical Complex, Punjab)' },
+    { value: 'Theni', label: 'Theni (Tata Decaffeination EOU, Tamil Nadu)' },
+    { value: 'Kolenchery', label: 'Kolenchery (Cochin Spice Extraction, Kerala)' },
+    { value: 'Sanand', label: 'Sanand GIDC (Gujarat)' },
+    { value: 'Vapi', label: 'Vapi GIDC (Gujarat)' },
+    { value: 'Ankleshwar', label: 'Ankleshwar & Bharuch (Gujarat)' },
+    { value: 'Dahej', label: 'Dahej PCPIR (Gujarat)' },
+    { value: 'Silvassa', label: 'Silvassa Hub (DNH)' },
+    { value: 'Daman', label: 'Daman Industrial Area' },
+    { value: 'Pune', label: 'Pune (Chakan, Bhosari, Kurkumbh, Nira)' },
+    { value: 'Mumbai', label: 'Mumbai MMR & Suburbs' },
+    { value: 'Thane', label: 'Thane & Bhiwandi' },
+    { value: 'Navi Mumbai', label: 'Navi Mumbai (TTC / Turbhe / Taloja)' },
+    { value: 'Tarapur', label: 'Tarapur MIDC / Boisar' },
+    { value: 'Aurangabad', label: 'Chhatrapati Sambhaji Nagar (Waluj)' },
+    { value: 'Vasai', label: 'Vasai-Virar / Palghar' },
+    { value: 'Ambernath', label: 'Ambernath & Dombivli' },
+    { value: 'Chennai', label: 'Chennai & Sriperumbudur (Tamil Nadu)' },
+    { value: 'Bengaluru', label: 'Bengaluru / Peenya (Karnataka)' },
+    { value: 'Hyderabad', label: 'Hyderabad / Cherlapally / Choutuppal (Telangana)' },
+    { value: 'Noida', label: 'Noida & Greater Noida (UP)' },
+    { value: 'Gajraula', label: 'Gajraula (Jubilant Ingrevia, UP)' },
+    { value: 'Gurugram', label: 'Gurugram, Bawal & Faridabad (Haryana)' },
+    { value: 'Kolkata', label: 'Kolkata & Howrah (West Bengal)' }
+  ],
+  'Maharashtra': [
+    { value: 'all', label: 'All Maharashtra MIDC Hubs' },
+    { value: 'Mahad', label: 'Mahad MIDC (Acetyls & Adhesives Hub)' },
+    { value: 'Lote Parshuram', label: 'Lote Parshuram MIDC (Chiplun)' },
+    { value: 'Pune', label: 'Pune (Chakan, Bhosari, Kurkumbh, Nira)' },
+    { value: 'Mumbai', label: 'Mumbai MMR & Suburbs' },
+    { value: 'Thane', label: 'Thane & Bhiwandi' },
+    { value: 'Navi Mumbai', label: 'Navi Mumbai (TTC, Turbhe, Rabale, Taloja)' },
+    { value: 'Tarapur', label: 'Tarapur MIDC / Boisar' },
+    { value: 'Aurangabad', label: 'Chhatrapati Sambhaji Nagar (Waluj)' },
+    { value: 'Vasai', label: 'Vasai-Virar / Palghar' },
+    { value: 'Ambernath', label: 'Ambernath & Dombivli MIDC' },
+    { value: 'Khopoli', label: 'Khopoli & Taloja (Raigad)' },
+    { value: 'Jalgaon', label: 'Jalgaon MIDC' }
+  ],
+  'Gujarat': [
+    { value: 'all', label: 'All Gujarat GIDC Hubs' },
+    { value: 'Sanand', label: 'Sanand GIDC (Ahmedabad)' },
+    { value: 'Vapi', label: 'Vapi GIDC (Valsad)' },
+    { value: 'Ankleshwar', label: 'Ankleshwar GIDC (Bharuch)' },
+    { value: 'Dahej', label: 'Dahej PCPIR SEZ' },
+    { value: 'Vallabh Vidyanagar', label: 'Anand / Vallabh Vidyanagar' }
+  ],
+  'Dadra and Nagar Haveli and Daman and Diu': [
+    { value: 'all', label: 'All Daman & Silvassa Hubs' },
+    { value: 'Silvassa', label: 'Silvassa Industrial Area' },
+    { value: 'Daman', label: 'Daman Industrial Area' }
+  ],
+  'Tamil Nadu': [
+    { value: 'all', label: 'All Tamil Nadu Industrial Hubs' },
+    { value: 'Chennai', label: 'Chennai Metro & Ambattur' },
+    { value: 'Sriperumbudur', label: 'Sriperumbudur SIPCOT' },
+    { value: 'Gummidipoondi', label: 'Gummidipoondi SIPCOT' },
+    { value: 'Theni', label: 'Theni (Tata Decaffeination EOU)' }
+  ],
+  'Karnataka': [
+    { value: 'all', label: 'All Karnataka Hubs' },
+    { value: 'Bengaluru', label: 'Bengaluru (Peenya / Bommasandra)' },
+    { value: 'Sameerwadi', label: 'Sameerwadi (Godavari Biorefinery)' }
+  ],
+  'Telangana': [
+    { value: 'all', label: 'All Telangana Hubs' },
+    { value: 'Hyderabad', label: 'Hyderabad (Cherlapally / Pashamylaram)' },
+    { value: 'Choutuppal', label: 'Choutuppal (Divi\'s Labs Pharma Hub)' }
+  ],
+  'Uttar Pradesh': [
+    { value: 'all', label: 'All Uttar Pradesh Hubs' },
+    { value: 'Noida', label: 'Noida (Sector 57, 80, 81)' },
+    { value: 'Greater Noida', label: 'Greater Noida (Kasna UPSIDC)' },
+    { value: 'Gajraula', label: 'Gajraula (Jubilant Ingrevia Complex)' },
+    { value: 'Sambhal', label: 'Sambhal / Asmoli (Dhampur Bio Organics)' }
+  ],
+  'Haryana': [
+    { value: 'all', label: 'All Haryana / NCR Hubs' },
+    { value: 'Gurugram', label: 'Gurugram / Manesar' },
+    { value: 'Bawal', label: 'Bawal HSIIDC (Kansai Nerolac)' },
+    { value: 'Faridabad', label: 'Faridabad Industrial Area' }
+  ],
+  'Punjab': [
+    { value: 'all', label: 'All Punjab Industrial Hubs' },
+    { value: 'Barnala', label: 'Barnala (IOLCP Chemical Complex)' }
+  ],
+  'Kerala': [
+    { value: 'all', label: 'All Kerala Industrial Hubs' },
+    { value: 'Kolenchery', label: 'Kolenchery / Cochin (Synthite Spice Extracts)' }
+  ],
+  'West Bengal': [
+    { value: 'all', label: 'All West Bengal Hubs' },
+    { value: 'Kolkata', label: 'Kolkata & Howrah' }
+  ]
+};
+
 // DOM Elements Cache
 const DOM = {
   // Counters
   statTotal: document.getElementById('statTotal'),
+  statStates: document.getElementById('statStates'),
   statBarrier: document.getElementById('statBarrier'),
   statInks: document.getElementById('statInks'),
   statClusters: document.getElementById('statClusters'),
+  statEthylAcetate: document.getElementById('statEthylAcetate'),
   badgeAll: document.getElementById('badgeAll'),
   badgeBarrier: document.getElementById('badgeBarrier'),
   badgeInks: document.getElementById('badgeInks'),
+  badgeSolvents: document.getElementById('badgeSolvents'),
   savedCountBadge: document.getElementById('savedCountBadge'),
   resultsCount: document.getElementById('resultsCount'),
 
@@ -34,11 +142,14 @@ const DOM = {
   searchInput: document.getElementById('searchInput'),
   btnClearSearch: document.getElementById('btnClearSearch'),
   domainTabs: document.querySelectorAll('.domain-tab'),
+  stateSelect: document.getElementById('stateSelect'),
+  eaSectorSelect: document.getElementById('eaSectorSelect'),
   subCategorySelect: document.getElementById('subCategorySelect'),
   citySelect: document.getElementById('citySelect'),
   sortSelect: document.getElementById('sortSelect'),
   btnResetFilters: document.getElementById('btnResetFilters'),
   activeTagsContainer: document.getElementById('activeTagsContainer'),
+  quickChips: document.querySelectorAll('.quick-chip'),
 
   // Content Container
   manufacturersGrid: document.getElementById('manufacturersGrid'),
@@ -50,6 +161,7 @@ const DOM = {
   btnTriggerLiveScout: document.getElementById('btnTriggerLiveScout'),
   btnCloseWebScout: document.getElementById('btnCloseWebScout'),
   scoutQueryInput: document.getElementById('scoutQueryInput'),
+  scoutStateInput: document.getElementById('scoutStateInput'),
   scoutCityInput: document.getElementById('scoutCityInput'),
   btnExecuteScout: document.getElementById('btnExecuteScout'),
   scoutLoading: document.getElementById('scoutLoading'),
@@ -63,6 +175,10 @@ const DOM = {
   modalLocationBadge: document.getElementById('modalLocationBadge'),
   modalDescription: document.getElementById('modalDescription'),
   modalProductsList: document.getElementById('modalProductsList'),
+  modalSolventsSection: document.getElementById('modalSolventsSection'),
+  modalEaRole: document.getElementById('modalEaRole'),
+  modalSolventsList: document.getElementById('modalSolventsList'),
+  modalApplicationsList: document.getElementById('modalApplicationsList'),
   modalYear: document.getElementById('modalYear'),
   modalCapacity: document.getElementById('modalCapacity'),
   modalGstin: document.getElementById('modalGstin'),
@@ -95,6 +211,15 @@ const DOM = {
   btnExportCsv: document.getElementById('btnExportCsv'),
   btnQuickPrint: document.getElementById('btnQuickPrint')
 };
+
+// Update city clusters dropdown dynamically based on selected state
+function updateClusterDropdown(stateName) {
+  if (!DOM.citySelect) return;
+  const clusters = CLUSTERS_BY_STATE[stateName] || CLUSTERS_BY_STATE.all;
+  DOM.citySelect.innerHTML = clusters.map(c => `<option value="${c.value}">${escapeHtml(c.label)}</option>`).join('');
+  DOM.citySelect.value = 'all';
+  state.currentCity = 'all';
+}
 
 // ==========================================================================
 // INITIALIZATION
@@ -132,6 +257,62 @@ function bindEventListeners() {
     });
   });
 
+  // State / UT Select Filter
+  if (DOM.stateSelect) {
+    DOM.stateSelect.addEventListener('change', (e) => {
+      state.selectedState = e.target.value;
+      updateClusterDropdown(state.selectedState);
+      filterAndRender();
+    });
+  }
+
+  // Ethyl Acetate Sector Filter
+  if (DOM.eaSectorSelect) {
+    DOM.eaSectorSelect.addEventListener('change', (e) => {
+      state.currentEaSector = e.target.value;
+      if (DOM.quickChips) {
+        DOM.quickChips.forEach(c => c.classList.toggle('active', c.getAttribute('data-filter') === 'all' && state.currentEaSector === 'all'));
+      }
+      filterAndRender();
+    });
+  }
+
+  // Quick Scopes Chips
+  if (DOM.quickChips) {
+    DOM.quickChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        DOM.quickChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const filter = chip.getAttribute('data-filter');
+        if (filter === 'all') {
+          state.currentEaSector = 'all';
+          state.currentDomain = 'all';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'all';
+          DOM.domainTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-domain') === 'all'));
+        } else if (filter === 'bulk-ea') {
+          state.currentEaSector = 'Bulk Producer';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'Bulk Producer';
+        } else if (filter === 'paints-coatings') {
+          state.currentEaSector = 'Paints & Coatings';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'Paints & Coatings';
+        } else if (filter === 'glues-adhesives') {
+          state.currentEaSector = 'Industrial Glues';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'Industrial Glues';
+        } else if (filter === 'packaging-inks') {
+          state.currentEaSector = 'Food Packaging Inks';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'Food Packaging Inks';
+        } else if (filter === 'pharma-decaf') {
+          state.currentEaSector = 'Pharma API & Cosmetics';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'Pharma API & Cosmetics';
+        } else if (filter === 'emerging-tech') {
+          state.currentEaSector = 'Emerging Tech & Electronics';
+          if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'Emerging Tech & Electronics';
+        }
+        filterAndRender();
+      });
+    });
+  }
+
   // Select Filters
   DOM.subCategorySelect.addEventListener('change', (e) => {
     state.currentSubCategory = e.target.value;
@@ -167,8 +348,15 @@ function bindEventListeners() {
   // Quick Scout Chips
   DOM.quickScoutChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      DOM.scoutQueryInput.value = chip.getAttribute('data-query');
-      DOM.scoutCityInput.value = chip.getAttribute('data-city');
+      DOM.scoutQueryInput.value = chip.getAttribute('data-query') || '';
+      const stateAttr = chip.getAttribute('data-state');
+      if (stateAttr && DOM.scoutStateInput) {
+        DOM.scoutStateInput.value = stateAttr;
+      }
+      const cityAttr = chip.getAttribute('data-city');
+      if (cityAttr && DOM.scoutCityInput) {
+        DOM.scoutCityInput.value = cityAttr;
+      }
       executeLiveScout();
     });
   });
@@ -222,15 +410,18 @@ async function fetchStats() {
     const res = await fetch('/api/stats');
     const data = await res.json();
     DOM.statTotal.textContent = data.totalCount;
+    if (DOM.statStates) DOM.statStates.textContent = data.statesCount || 11;
     DOM.statBarrier.textContent = data.barrierFilmsCount;
     DOM.statInks.textContent = data.inksAdhesivesCount;
     DOM.statClusters.textContent = data.uniqueClusters;
+    if (DOM.statEthylAcetate) DOM.statEthylAcetate.textContent = data.ethylAcetateCount || 32;
     DOM.badgeAll.textContent = data.totalCount;
     DOM.badgeBarrier.textContent = data.barrierFilmsCount;
     DOM.badgeInks.textContent = data.inksAdhesivesCount;
+    if (DOM.badgeSolvents) DOM.badgeSolvents.textContent = data.ethylAcetateCount || 32;
     const dbStatusEl = document.getElementById('dbStatusText');
     if (dbStatusEl) {
-      dbStatusEl.textContent = `MongoDB Atlas: Connected (${data.totalCount} Plants)`;
+      dbStatusEl.textContent = `MongoDB Atlas: Connected (${data.totalCount} Plants across ${data.statesCount || 11} States)`;
     }
   } catch (err) {
     console.error('Failed to load stats:', err);
@@ -260,9 +451,27 @@ async function loadManufacturers() {
 function filterAndRender() {
   let list = [...state.allManufacturers];
 
+  // 0. State / UT Filter
+  if (state.selectedState !== 'all') {
+    list = list.filter(item => item.state && item.state.toLowerCase() === state.selectedState.toLowerCase());
+  }
+
   // 1. Domain Filter
   if (state.currentDomain !== 'all') {
-    list = list.filter(item => item.category === state.currentDomain);
+    list = list.filter(item => {
+      if (state.currentDomain === 'Bulk Solvents & Chemicals') {
+        return item.category.includes('Solvents') || item.category.includes('Chemicals') || item.ethylAcetateRole;
+      }
+      return item.category === state.currentDomain;
+    });
+  }
+
+  // 1b. Ethyl Acetate Sector Filter
+  if (state.currentEaSector && state.currentEaSector !== 'all') {
+    list = list.filter(item => 
+      (item.ethylAcetateRole && item.ethylAcetateRole.toLowerCase().includes(state.currentEaSector.toLowerCase())) ||
+      (item.applications && item.applications.some(a => a.toLowerCase().includes(state.currentEaSector.toLowerCase())))
+    );
   }
 
   // 2. Sub-Category Filter
@@ -275,8 +484,8 @@ function filterAndRender() {
   // 3. City / Cluster Filter
   if (state.currentCity !== 'all') {
     list = list.filter(item => 
-      item.city.toLowerCase().includes(state.currentCity.toLowerCase()) ||
-      item.district.toLowerCase().includes(state.currentCity.toLowerCase()) ||
+      (item.city && item.city.toLowerCase().includes(state.currentCity.toLowerCase())) ||
+      (item.district && item.district.toLowerCase().includes(state.currentCity.toLowerCase())) ||
       (item.industrialArea && item.industrialArea.toLowerCase().includes(state.currentCity.toLowerCase()))
     );
   }
@@ -285,18 +494,24 @@ function filterAndRender() {
   if (state.searchQuery) {
     const q = state.searchQuery.toLowerCase();
     list = list.filter(item => {
-      const nameMatch = item.name.toLowerCase().includes(q);
-      const descMatch = item.description.toLowerCase().includes(q);
-      const addrMatch = item.address.toLowerCase().includes(q);
-      const prodMatch = item.products.some(p => p.toLowerCase().includes(q));
-      const subMatch = item.subCategories.some(s => s.toLowerCase().includes(q));
-      return nameMatch || descMatch || addrMatch || prodMatch || subMatch;
+      const nameMatch = (item.name || '').toLowerCase().includes(q);
+      const descMatch = (item.description || '').toLowerCase().includes(q);
+      const addrMatch = (item.address || '').toLowerCase().includes(q);
+      const stateMatch = (item.state || '').toLowerCase().includes(q);
+      const prodMatch = (item.products || []).some(p => p.toLowerCase().includes(q));
+      const subMatch = (item.subCategories || []).some(s => s.toLowerCase().includes(q));
+      const roleMatch = (item.ethylAcetateRole || '').toLowerCase().includes(q);
+      const solvMatch = (item.solventsHandled || []).some(s => s.toLowerCase().includes(q));
+      const appMatch = (item.applications || []).some(a => a.toLowerCase().includes(q));
+      return nameMatch || descMatch || addrMatch || stateMatch || prodMatch || subMatch || roleMatch || solvMatch || appMatch;
     });
   }
 
   // 5. Sorting
   if (state.sortBy === 'name-asc') {
     list.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (state.sortBy === 'state-asc') {
+    list.sort((a, b) => (a.state || '').localeCompare(b.state || '') || a.name.localeCompare(b.name));
   } else if (state.sortBy === 'city-asc') {
     list.sort((a, b) => a.city.localeCompare(b.city));
   } else if (state.sortBy === 'established-desc') {
@@ -333,7 +548,10 @@ function renderCards(list) {
       <article class="supplier-card" data-id="${item.id}">
         <div>
           <div class="card-top">
-            <span class="card-category-badge ${categoryBadgeClass}">${escapeHtml(item.category)}</span>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+              <span class="card-category-badge ${categoryBadgeClass}">${escapeHtml(item.category)}</span>
+              ${item.ethylAcetateRole ? `<span class="role-pill">🧪 ${escapeHtml(item.ethylAcetateRole)}</span>` : ''}
+            </div>
             <button class="btn-bookmark ${isSaved ? 'bookmarked' : ''}" onclick="toggleBookmark('${item.id}', event)" title="${isSaved ? 'Remove Bookmark' : 'Save Supplier'}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
             </button>
@@ -343,7 +561,7 @@ function renderCards(list) {
 
           <div class="card-location-row">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>${escapeHtml(item.city)} &bull; ${escapeHtml(item.industrialArea || 'MIDC Zone')}</span>
+            <span><strong class="state-pill">${escapeHtml(item.state || 'India')}</strong> &bull; ${escapeHtml(item.city)} &bull; ${escapeHtml(item.industrialArea || 'Industrial Hub')}</span>
           </div>
 
           <p class="card-description">${escapeHtml(item.description)}</p>
@@ -352,31 +570,33 @@ function renderCards(list) {
             ${productsHtml}
           </div>
 
-          <div class="card-contact-preview">
-            <div class="contact-row">
-              <span class="contact-label">Phone:</span>
-              <span class="contact-val code-font">${escapeHtml(item.phone || item.mobile || 'Available')}</span>
+          ${(item.solventsHandled && item.solventsHandled.length > 0) ? `
+            <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 14px; align-items: center;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">Solvents:</span>
+              ${item.solventsHandled.slice(0, 3).map(s => `<span class="solvent-pill">${escapeHtml(s)}</span>`).join('')}
+              ${(item.applications && item.applications[0]) ? `<span class="app-pill">${escapeHtml(item.applications[0])}</span>` : ''}
             </div>
-            <div class="contact-row">
-              <span class="contact-label">Email:</span>
-              <span class="contact-val code-font">${escapeHtml(item.salesEmail || item.email || 'Direct Sales')}</span>
+          ` : ''}
+
+          <div class="card-contact-preview">
+            <div class="contact-preview-item">
+              <span class="preview-label">Direct Contact:</span>
+              <span class="preview-val code-font">${escapeHtml(item.phone || item.mobile || 'Available on Request')}</span>
+            </div>
+            <div class="contact-preview-item">
+              <span class="preview-label">Official Email:</span>
+              <span class="preview-val code-font">${escapeHtml(item.salesEmail || item.email || 'Contact Desk')}</span>
             </div>
           </div>
         </div>
 
-        <div class="card-actions">
-          <button class="btn btn-primary btn-sm btn-block" data-action="view-profile" data-id="${item.id}" onclick="openDetailsModal('${item.id}')">
-            <span>View Profile</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        <div class="card-footer-actions">
+          <button class="btn btn-outline btn-sm card-view-btn" data-action="view-profile" data-id="${item.id}" onclick="openDetailsModal('${item.id}')">
+            <span>View Profile &rarr;</span>
           </button>
           ${item.website ? `
-            <a href="${item.website}" target="_blank" rel="noopener noreferrer" class="card-web-btn" title="Open Official Website / Web Profile">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </a>
-          ` : ''}
-          ${phoneClean ? `
-            <a href="tel:${phoneClean}" class="btn btn-secondary btn-sm" title="Call directly">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="${escapeHtml(item.website)}" target="_blank" class="card-web-btn" title="Open Official Website directly">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
             </a>
           ` : ''}
           <button class="card-delete-btn" title="Delete plant (Not interested)" onclick="confirmDeletePlant('${item.id}', '${escapeHtml(item.name).replace(/'/g, "\\'")}', event)">
@@ -393,10 +613,26 @@ function renderCards(list) {
 function renderActiveTags() {
   const tags = [];
 
+  if (state.selectedState !== 'all') {
+    tags.push({ label: `State: ${state.selectedState}`, reset: () => {
+      state.selectedState = 'all';
+      if (DOM.stateSelect) DOM.stateSelect.value = 'all';
+      updateClusterDropdown('all');
+    }});
+  }
+
   if (state.currentDomain !== 'all') {
     tags.push({ label: `Sector: ${state.currentDomain}`, reset: () => {
       state.currentDomain = 'all';
       DOM.domainTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-domain') === 'all'));
+    }});
+  }
+
+  if (state.currentEaSector && state.currentEaSector !== 'all') {
+    tags.push({ label: `EtOAc Sector: ${state.currentEaSector}`, reset: () => {
+      state.currentEaSector = 'all';
+      if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'all';
+      if (DOM.quickChips) DOM.quickChips.forEach(c => c.classList.toggle('active', c.getAttribute('data-filter') === 'all'));
     }});
   }
 
@@ -440,18 +676,24 @@ window.removeTag = function(idx) {
 };
 
 function resetFilters() {
+  state.selectedState = 'all';
   state.currentDomain = 'all';
   state.currentSubCategory = 'all';
   state.currentCity = 'all';
+  state.currentEaSector = 'all';
   state.searchQuery = '';
   state.sortBy = 'name-asc';
 
+  if (DOM.stateSelect) DOM.stateSelect.value = 'all';
+  if (DOM.eaSectorSelect) DOM.eaSectorSelect.value = 'all';
+  updateClusterDropdown('all');
+
+  DOM.domainTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-domain') === 'all'));
+  if (DOM.quickChips) DOM.quickChips.forEach(c => c.classList.toggle('active', c.getAttribute('data-filter') === 'all'));
+  DOM.subCategorySelect.value = 'all';
+  DOM.sortSelect.value = 'name-asc';
   DOM.searchInput.value = '';
   DOM.btnClearSearch.style.display = 'none';
-  DOM.domainTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-domain') === 'all'));
-  DOM.subCategorySelect.value = 'all';
-  DOM.citySelect.value = 'all';
-  DOM.sortSelect.value = 'name-asc';
 
   filterAndRender();
 }
@@ -478,7 +720,7 @@ function openDetailsModal(id) {
     }
 
     if (DOM.modalLocationBadge) {
-      DOM.modalLocationBadge.textContent = `${item.city} • ${item.industrialArea || 'MIDC Industrial Zone'}`;
+      DOM.modalLocationBadge.innerHTML = `<span class="state-pill">${escapeHtml(item.state || 'India')}</span> • ${escapeHtml(item.city)} • ${escapeHtml(item.industrialArea || 'Industrial Hub')}`;
     }
     if (DOM.modalDescription) DOM.modalDescription.textContent = item.description;
 
@@ -489,11 +731,33 @@ function openDetailsModal(id) {
       ).join('');
     }
 
+    // Ethyl Acetate & Solvents Dossier
+    if (DOM.modalSolventsSection) {
+      if (item.ethylAcetateRole || (item.solventsHandled && item.solventsHandled.length > 0)) {
+        DOM.modalSolventsSection.style.display = 'block';
+        if (DOM.modalEaRole) {
+          DOM.modalEaRole.innerHTML = `<span class="role-pill">🧪 ${escapeHtml(item.ethylAcetateRole || 'Industrial Formulateur')}</span>`;
+        }
+        if (DOM.modalSolventsList) {
+          DOM.modalSolventsList.innerHTML = (item.solventsHandled || ['Ethyl Acetate']).map(s => 
+            `<span class="solvent-pill">${escapeHtml(s)}</span>`
+          ).join('');
+        }
+        if (DOM.modalApplicationsList) {
+          DOM.modalApplicationsList.innerHTML = (item.applications || ['Packaging & Printing']).map(a => 
+            `<span class="app-pill">${escapeHtml(a)}</span>`
+          ).join('');
+        }
+      } else {
+        DOM.modalSolventsSection.style.display = 'none';
+      }
+    }
+
     // Metadata
     if (DOM.modalYear) DOM.modalYear.textContent = item.yearEstablished ? `${item.yearEstablished} (Est.)` : 'Verified';
     if (DOM.modalCapacity) DOM.modalCapacity.textContent = item.plantCapacity || 'Standard Capacity';
-    if (DOM.modalGstin) DOM.modalGstin.textContent = item.gstin || '27 (Maharashtra)';
-    if (DOM.modalMidc) DOM.modalMidc.textContent = item.industrialArea || item.city;
+    if (DOM.modalGstin) DOM.modalGstin.textContent = item.gstin || (item.state === 'Gujarat' ? '24 (Gujarat)' : item.state === 'Tamil Nadu' ? '33 (Tamil Nadu)' : item.state === 'Karnataka' ? '29 (Karnataka)' : item.state === 'Telangana' ? '36 (Telangana)' : item.state === 'Uttar Pradesh' ? '09 (UP)' : item.state === 'Haryana' ? '06 (Haryana)' : item.state === 'Punjab' ? '03 (Punjab)' : item.state === 'Kerala' ? '32 (Kerala)' : '27 (Maharashtra)');
+    if (DOM.modalMidc) DOM.modalMidc.textContent = `${item.industrialArea || item.city} (${item.state || 'India'})`;
 
     // Contact Hub
     if (DOM.modalContactPerson) DOM.modalContactPerson.textContent = item.contactPerson || 'Direct Sales & Technical Division';
@@ -521,7 +785,7 @@ function openDetailsModal(id) {
     if (DOM.linkWhatsapp) {
       if (mobileClean) {
         const waNumber = mobileClean.startsWith('+') ? mobileClean.replace('+', '') : `91${mobileClean}`;
-        const waMsg = encodeURIComponent(`Hello, I am inquiring about your packaging / barrier films & inks solutions in Maharashtra.`);
+        const waMsg = encodeURIComponent(`Hello, I am inquiring about your packaging / barrier films & inks solutions in ${item.state || 'India'}.`);
         DOM.linkWhatsapp.href = `https://wa.me/${waNumber}?text=${waMsg}`;
         DOM.linkWhatsapp.style.display = 'inline-flex';
       } else {
@@ -531,7 +795,7 @@ function openDetailsModal(id) {
 
     // Email
     if (DOM.linkSendEmail) {
-      DOM.linkSendEmail.href = emailTarget ? `mailto:${emailTarget}?subject=Product%20Enquiry%20from%20MahaPack%20Scout` : '#';
+      DOM.linkSendEmail.href = emailTarget ? `mailto:${emailTarget}?subject=Product%20Enquiry%20from%20IndiaPack%20Scout` : '#';
       DOM.linkSendEmail.style.display = emailTarget ? 'inline-flex' : 'none';
     }
 
@@ -652,10 +916,11 @@ function closeWebScout() {
 
 async function executeLiveScout() {
   const query = DOM.scoutQueryInput.value.trim();
-  const city = DOM.scoutCityInput.value;
+  const scoutState = DOM.scoutStateInput ? DOM.scoutStateInput.value : 'all';
+  const city = DOM.scoutCityInput ? DOM.scoutCityInput.value : 'all';
 
   if (!query) {
-    alert('Please enter a product or company search term to scan Maharashtra web sources.');
+    alert('Please enter a product or company search term to scan Indian web sources.');
     return;
   }
 
@@ -668,9 +933,9 @@ async function executeLiveScout() {
   const statusSub = document.querySelector('.scout-status-sub');
   let stepIdx = 0;
   const scanSteps = [
-    { title: 'Connecting to Maharashtra B2B network & MIDC industrial nodes...', sub: 'Probing Chakan, Waluj, TTC Turbhe, Tarapur, and Vasai directories...' },
-    { title: 'Harvesting company contact pages & official phone directories...', sub: 'Extracting direct landlines (022, 020, 0250), mobile numbers, and sales emails...' },
-    { title: 'Verifying factory & plant locations in Maharashtra...', sub: 'Validating MIDC plot addresses, GSTIN credentials, and specialized capabilities...' },
+    { title: 'Connecting to Indian B2B packaging network & state industrial nodes...', sub: 'Probing Sanand, Vapi, Chakan, Silvassa, Chennai, and Noida corridors...' },
+    { title: 'Harvesting company contact pages & official phone directories...', sub: 'Extracting direct landlines, mobile numbers, and sales emails across India...' },
+    { title: 'Verifying factory & plant locations across Indian states...', sub: 'Validating GIDC/MIDC/SIPCOT plot addresses, GSTIN credentials, and specialized capabilities...' },
     { title: 'Synthesizing verified industrial contact dossiers...', sub: 'Filtering out non-contact results and assembling complete leads...' }
   ];
 
@@ -684,11 +949,11 @@ async function executeLiveScout() {
     const res = await fetch('/api/search-web', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, city })
+      body: JSON.stringify({ query, state: scoutState, city })
     });
 
     const data = await res.json();
-    renderScoutResults(data.results || [], query, city);
+    renderScoutResults(data.results || [], query, city, scoutState);
   } catch (err) {
     console.error('Live scout error:', err);
     DOM.scoutResultsContainer.innerHTML = `
@@ -705,34 +970,37 @@ async function executeLiveScout() {
   }
 }
 
-function renderScoutResults(results, query, city) {
+function renderScoutResults(results, query, city, scoutState) {
   if (!results || results.length === 0) {
     DOM.scoutResultsContainer.innerHTML = `
       <div class="empty-state">
         <div class="empty-icon">🔍</div>
-        <h4>No Direct Matches on Live Scan for "${escapeHtml(query)}" in ${escapeHtml(city)}</h4>
+        <h4>No Direct Matches on Live Scan for "${escapeHtml(query)}" in ${escapeHtml(city !== 'all' ? city : (scoutState !== 'all' ? scoutState : 'India'))}</h4>
         <p>Try refining the search term (e.g. "barrier film", "vacuum pouch", "lamination adhesive", "flexo inks").</p>
       </div>`;
     return;
   }
 
+  const stateHeader = (scoutState && scoutState !== 'all') ? scoutState : 'India';
+
   const html = `
     <div style="margin-bottom: 14px; font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600; display: flex; align-items: center; justify-content: space-between;">
-      <span>Scanned & Verified ${results.length} Industrial Units in Maharashtra:</span>
+      <span>Scanned & Verified ${results.length} Industrial Units in ${escapeHtml(stateHeader)}:</span>
       <span style="font-size: 0.75rem; color: var(--text-muted);">All results include verified phone, email & plant addresses</span>
     </div>
     ${results.map((r, i) => {
       const phones = r.phones || (r.phone ? [r.phone] : []);
       const emails = r.emails || (r.salesEmail ? [r.salesEmail] : (r.email ? [r.email] : []));
-      const address = r.address || `${r.detectedCity || 'Mumbai'}, Maharashtra`;
-      const detectedCity = r.detectedCity || r.city || 'Maharashtra';
-      const industrialArea = r.industrialArea || 'MIDC Industrial Zone';
+      const leadState = r.state || (scoutState !== 'all' ? scoutState : 'India');
+      const address = r.address || `${r.detectedCity || 'Industrial Hub'}, ${leadState}, India`;
+      const detectedCity = r.detectedCity || r.city || leadState;
+      const industrialArea = r.industrialArea || 'Industrial Zone';
 
       const phoneActionsHtml = phones.map(p => {
         const cleanNum = p.replace(/[^\d+]/g, '');
         const isMobile = cleanNum.length >= 10 && !cleanNum.startsWith('022') && !cleanNum.startsWith('020') && !cleanNum.startsWith('0250');
         const waNumber = cleanNum.startsWith('+91') ? cleanNum.replace('+', '') : (cleanNum.length === 10 ? `91${cleanNum}` : cleanNum);
-        const waMsg = encodeURIComponent(`Hello, I am inquiring regarding your flexible packaging / barrier films / inks solutions in Maharashtra.`);
+        const waMsg = encodeURIComponent(`Hello, I am inquiring regarding your flexible packaging / barrier films / inks solutions in ${leadState}.`);
 
         return `
           <div class="scout-action-group">
@@ -751,7 +1019,7 @@ function renderScoutResults(results, query, city) {
       }).join('');
 
       const emailActionsHtml = emails.map(e => `
-        <a href="mailto:${escapeHtml(e)}?subject=${encodeURIComponent(`Product Enquiry from MahaPack B2B Scout`)}" class="scout-action-btn email-btn" title="Send direct sales email">
+        <a href="mailto:${escapeHtml(e)}?subject=${encodeURIComponent(`Product Enquiry from IndiaPack B2B Scout`)}" class="scout-action-btn email-btn" title="Send direct sales email">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           <span>${escapeHtml(e)}</span>
         </a>
@@ -765,9 +1033,9 @@ function renderScoutResults(results, query, city) {
             <div>
               <div class="scout-badge-row">
                 <span class="scout-source-badge ${r.source && r.source.includes('Live Web') ? 'source-live' : 'source-verified'}">
-                  ${escapeHtml(r.source || 'Verified MH Supplier')}
+                  ${escapeHtml(r.source || `Verified ${leadState} Supplier`)}
                 </span>
-                <span class="scout-city-badge">📍 ${escapeHtml(detectedCity)} &bull; ${escapeHtml(industrialArea)}</span>
+                <span class="scout-city-badge">📍 <strong class="state-pill">${escapeHtml(leadState)}</strong> &bull; ${escapeHtml(detectedCity)} &bull; ${escapeHtml(industrialArea)}</span>
                 ${r.liveWebData && r.liveWebData.isLive ? `
                   <span class="live-telemetry-pill">
                     <span class="live-pulse-dot"></span>
@@ -842,7 +1110,7 @@ function renderScoutResults(results, query, city) {
 
           <div class="scout-result-footer">
             ${r.url ? `<a href="${escapeHtml(r.url)}" target="_blank" class="scout-url-link">🌐 ${escapeHtml(r.url.replace(/^https?:\/\//, ''))} ↗</a>` : '<span></span>'}
-            <span class="scout-verified-tag">✓ Verified Maharashtra Industrial Unit</span>
+            <span class="scout-verified-tag">✓ Verified ${escapeHtml(leadState)} Industrial Unit</span>
           </div>
         </div>
       `;
@@ -856,6 +1124,8 @@ function renderScoutResults(results, query, city) {
 window.saveWebLeadToDatabase = async function(index) {
   if (!window._lastScoutResults || !window._lastScoutResults[index]) return;
   const lead = window._lastScoutResults[index];
+  const scoutState = DOM.scoutStateInput ? DOM.scoutStateInput.value : 'all';
+  const leadState = lead.state || (scoutState !== 'all' ? scoutState : 'Maharashtra');
 
   // Infer category
   const text = (lead.name + ' ' + (lead.snippet || '') + ' ' + (lead.category || '')).toLowerCase();
@@ -873,11 +1143,12 @@ window.saveWebLeadToDatabase = async function(index) {
     category: category,
     subCategories: lead.subCategories || (isFilms ? ['Extrusion Films', 'Vacuum Pouches'] : ['Printing Inks for Flexible Packaging']),
     products: lead.products || [lead.name],
-    description: lead.snippet || 'Verified packaging/inks manufacturer in Maharashtra.',
-    address: lead.address || `${lead.detectedCity || 'Mumbai'}, Maharashtra`,
-    city: lead.detectedCity || lead.city || 'Mumbai',
-    district: lead.district || lead.detectedCity || 'Maharashtra',
-    industrialArea: lead.industrialArea || 'MIDC Industrial Area',
+    description: lead.snippet || `Verified packaging/inks manufacturer in ${leadState}.`,
+    state: leadState,
+    address: lead.address || `${lead.detectedCity || 'Industrial Hub'}, ${leadState}, India`,
+    city: lead.detectedCity || lead.city || 'Industrial Hub',
+    district: lead.district || lead.detectedCity || leadState,
+    industrialArea: lead.industrialArea || 'Industrial Area',
     phone: phoneVal,
     mobile: mobileVal,
     email: emailVal,
@@ -885,7 +1156,7 @@ window.saveWebLeadToDatabase = async function(index) {
     contactPerson: lead.contactPerson || 'Sales & Technical Team',
     website: lead.url || '',
     pincode: (lead.pincodes && lead.pincodes[0]) || lead.pincode || '400001',
-    gstin: lead.gstin || '27XXXXX0000X1ZX'
+    gstin: lead.gstin || (leadState === 'Gujarat' ? '24XXXXX0000X1ZX' : leadState === 'Tamil Nadu' ? '33XXXXX0000X1ZX' : '27XXXXX0000X1ZX')
   };
 
   try {
@@ -897,7 +1168,7 @@ window.saveWebLeadToDatabase = async function(index) {
 
     const data = await res.json();
     if (data.success) {
-      alert(`✅ Saved "${lead.name}" with full contact details to your Maharashtra directory!`);
+      alert(`✅ Saved "${lead.name}" (${leadState}) with full contact details to your directory!`);
       // Update item UI
       const itemEl = document.getElementById(`scout-item-${index}`);
       if (itemEl) {
@@ -997,7 +1268,9 @@ function clearAllSaved() {
 // ==========================================================================
 function exportCurrentCsv() {
   const params = new URLSearchParams();
+  if (state.selectedState !== 'all') params.append('state', state.selectedState);
   if (state.currentDomain !== 'all') params.append('category', state.currentDomain);
+  if (state.currentEaSector !== 'all') params.append('role', state.currentEaSector);
   if (state.currentSubCategory !== 'all') params.append('subCategory', state.currentSubCategory);
   if (state.currentCity !== 'all') params.append('city', state.currentCity);
 
@@ -1011,7 +1284,7 @@ function exportSavedLeads() {
     return;
   }
 
-  const headers = ['ID', 'Company Name', 'Category', 'City', 'Phone', 'Mobile', 'Email', 'Address'];
+  const headers = ['ID', 'Company Name', 'Category', 'State', 'City', 'Phone', 'Mobile', 'Email', 'Address'];
   const rows = [headers.join(',')];
 
   savedItems.forEach(m => {
@@ -1019,6 +1292,7 @@ function exportSavedLeads() {
       `"${m.id}"`,
       `"${(m.name || '').replace(/"/g, '""')}"`,
       `"${(m.category || '').replace(/"/g, '""')}"`,
+      `"${(m.state || 'India').replace(/"/g, '""')}"`,
       `"${(m.city || '').replace(/"/g, '""')}"`,
       `"${m.phone || ''}"`,
       `"${m.mobile || ''}"`,
@@ -1031,7 +1305,7 @@ function exportSavedLeads() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'saved_maharashtra_packaging_leads.csv';
+  a.download = 'saved_india_packaging_leads.csv';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

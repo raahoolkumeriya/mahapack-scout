@@ -1,14 +1,14 @@
-# MahaPack Scout ⚡
+# IndiaPack Scout ⚡
 
-> **Maharashtra Packaging Films, Inks & Adhesives Industrial Intelligence & Live B2B Web Scout Platform**
+> **All-India Packaging Films, Inks, Adhesives & Ethyl Acetate Industrial Intelligence Platform**
 
-MahaPack Scout is a high-speed B2B industrial intelligence and web scouting web application focused exclusively on manufacturing facilities in **Maharashtra, India**. It provides verified manufacturer intelligence, live web scouting, direct contact dossiers, and MongoDB Atlas cloud synchronization for flexible packaging films, printing inks, coatings, adhesives, and masterbatches.
+IndiaPack Scout is a high-speed B2B industrial intelligence and web scouting web application focused on premier packaging manufacturing and chemical facilities across **India**. It provides verified manufacturer intelligence, live web scouting, state-wise filtering, direct contact dossiers, and MongoDB Atlas cloud synchronization for flexible packaging films, printing inks, coatings, laminating adhesives, and **bulk Ethyl Acetate chemical ecosystems**.
 
 ---
 
-## 🎯 Target Industrial Domains
+## 🎯 Target Industrial Domains & Ecosystems
 
-The platform tracks and verifies manufacturing plants across two technical domains:
+The platform tracks and verifies manufacturing plants across three technical pillars:
 
 1. **Extrusion & High-Barrier Packaging Films**:
    - Co-extruded blown & cast films (3-layer, 5-layer, 7-layer, 9-layer)
@@ -16,44 +16,56 @@ The platform tracks and verifies manufacturing plants across two technical domai
    - Multi-layer laminated films & flexible webs
    - Heavy-duty & gas-flush vacuum pouches
    - Peelable & anti-fog lidding films (cups, trays, MAP packaging)
-   - Thermoforming bottom & top web films (food, meat, dairy & medical device packaging)
+   - Thermoforming bottom & top web films (food, meat, dairy & medical packaging)
 
 2. **Printing Inks, Adhesives & Masterbatches**:
    - Rotogravure printing inks for flexible packaging
    - Flexographic printing inks (water-based, solvent-based, UV)
    - Lamination and poly inks (NTNK - Non-Toluene Non-Ketone compliant)
    - Solventless and solvent-based 2-component polyurethane (PU) lamination adhesives
-   - Functional barrier coatings (oxygen, moisture, and grease barrier, overprint varnishes)
-   - Additive & color masterbatches (white TiO₂, slip, anti-block, PPA, UV stabilizers)
+   - Functional barrier coatings (oxygen, moisture, and grease barrier, OPV)
+   - Additive & color masterbatches (white TiO₂, slip, anti-block, PPA, UV)
+
+3. **Ethyl Acetate (EtOAc) Chemical & Application Ecosystem**:
+   - **Primary Bulk Producers**: Mega-scale acetyl chemical plants (Laxmi Organic, Jubilant Ingrevia, IOL Chemicals, Godavari Biorefineries, GNFC, Dhampur Bio Organics).
+   - **Paints, Coatings & Industrial Finishes**: Automotive OEM 2K clear coats, nitrocellulose & acrylic wood finishes, and industrial primers (Asian Paints, Kansai Nerolac, Berger Paints).
+   - **Industrial Glues & Adhesives**: Primary fast-evaporating tack carriers in contact cements, pressure-sensitive tapes, and 2K polyurethane laminating adhesives (Pidilite Industries, Brilliant Polymers, Henkel Anand).
+   - **Food Packaging Printing Inks**: Standard clean-evaporating carrier solvents for rotogravure and flexographic inks meeting food wrapper safety regulations (Siegwerk, DIC India, Hubergroup, Toyo Ink, Sakata Inx).
+   - **Pharmaceuticals & Cosmetics**: Extraction, crystallization, and purification of Active Pharmaceutical Ingredients (APIs) under US FDA limits (Divi's Laboratories, IOLCP) and personal care nail lacquers/perfumes (Fiabila India).
+   - **Food & Beverage Processing**: Natural sugarcane ethyl acetate decaffeination of coffee beans and green tea (Tata Coffee Theni EOU) and botanical spice oleoresin extraction (Synthite Industries).
+   - **Emerging Technology Applications**: Photoresist stripping in semiconductor fabrication and lithium-ion battery electrode slurry formulation (Chemcon Speciality Chemicals).
 
 ---
 
-## 📍 Geographic Coverage (Maharashtra MIDC Clusters)
+## 📍 Geographic Coverage (Pan-India Industrial Corridors)
 
-Exclusively covers manufacturing plants, converting units, and technical hubs located in Maharashtra's key MIDC and industrial zones:
+Covers **105 premier manufacturing facilities** across India's top 11 industrial states:
 
-- **Pune District**: Chakan Phase I & II MIDC, Bhosari MIDC, PCNTDA, Kurkumbh MIDC
-- **Mumbai Metropolitan Region (MMR)**: Andheri East/Marol, Lower Parel, Wadala, Kurla, Sakinaka
-- **Thane District**: Thane Wagle MIDC, Bhiwandi Logistics Corridor, Ambernath Anand Nagar MIDC, Dombivli MIDC Phase II
-- **Navi Mumbai**: TTC Industrial Area (Turbhe, Mahape, Rabale), Taloja MIDC
-- **Palghar District**: Tarapur / Boisar MIDC, Vasai East Industrial Estates (Waliv, Parmar)
-- **Chhatrapati Sambhaji Nagar (Aurangabad)**: Waluj MIDC, Shendra MIDC, Chikalthana
-- **Raigad District**: Khopoli MIDC, Mahad MIDC
-- **North Maharashtra**: Jalgaon MIDC
+- **Maharashtra** (59 plants): Mahad MIDC, Lote Parshuram MIDC, Chakan MIDC, Bhosari MIDC, Waluj MIDC, Tarapur MIDC, Vasai East, TTC Navi Mumbai, Taloja, Kurkumbh MIDC, Nira, Ambernath MIDC, Mumbai MMR.
+- **Gujarat** (14 plants): Sanand GIDC, Vapi GIDC, Dahej PCPIR, Ankleshwar GIDC, Bharuch, Vallabh Vidyanagar (Anand).
+- **Tamil Nadu** (6 plants): Sriperumbudur SIPCOT, Gummidipoondi SIPCOT, Ambattur, Theni Decaffeination EOU.
+- **Uttar Pradesh** (5 plants): Kasna Greater Noida, Noida Sector 57, Gajraula UPSIDC, Asmoli Sambhal.
+- **Dadra and Nagar Haveli & Daman and Diu** (4 plants): Silvassa Industrial Area (Piparia, Athal) and Daman.
+- **Karnataka** (3 plants): Peenya Industrial Area, Bommasandra KIADB, Sameerwadi Biorefinery Complex.
+- **Telangana** (3 plants): Cherlapally IDA, Pashamylaram, Choutuppal Pharma Industrial Zone.
+- **Haryana / Delhi NCR** (3 plants): Gurugram, Bawal HSIIDC, Manesar, Faridabad.
+- **Punjab** (1 plant): Barnala Trident Chemical Complex (IOLCP 100,000 TPA facility).
+- **Kerala** (1 plant): Kolenchery / Cochin (Synthite Bio-Industrial Park).
+- **West Bengal** (1 plant): Kolkata & Howrah Industrial Belt.
 
 ---
 
 ## ✨ Key Features
 
-- **54 Verified Manufacturing Units**: In-depth dossiers covering plant capacities, year established, GSTIN numbers, and comprehensive product lists.
-- **Complete Contact Dossiers**: Direct factory landlines, mobile numbers, technical sales emails, and full physical MIDC addresses.
+- **105 Verified Manufacturing Units**: In-depth dossiers covering plant capacities, year established, GSTIN numbers, ethyl acetate roles, solvents handled, and target applications.
+- **Dedicated Ethyl Acetate Sector Filter & Quick Chips**: Instantly filter across Bulk Producers, Paints & Finishes, Glues & Adhesives, Food Packaging Inks, Pharma API, and Decaffeination.
+- **State-Wise Dynamic Filtering**: Instant state selection dropdown with dynamic industrial cluster updates for GIDC, MIDC, SIPCOT, KIADB, UPSIDC, etc.
+- **Complete Contact Dossiers**: Direct factory landlines, mobile numbers, technical sales emails, and full physical plant addresses.
 - **Real-Time Live Web Scout Engine (`POST /api/search-web`)**:
-  - **Mode A (Live URL & Corporate Domain Scanner)**: Accepts full URLs or bare domains (e.g. `tcpl.in`, `bilcare.com`, `cosmofirst.com`). Concurrently scans `/` and `/contact-us`, extracting company name, real-time meta descriptions, verified telephone landlines (022, 020, 0250, 0240, etc.), sales emails, and MIDC plant addresses with live HTTP latency telemetry.
-  - **Mode B (Technical Spec & Knowledge Graph with Real-Time HTTP Probing)**: Multi-term technical search across Maharashtra packaging plants with acronym expansion (`PA`, `EVOH`, `PU`, `MB`, `NTNK`, `BOPP`, etc.), zero-empty cluster broadening, and parallel live HTTP probing (`HTTP 200` round-trip latency, live page titles, and live website snippets).
-  - **1-Click Save to Directory**: Save newly scouted leads from the live web directly into MongoDB Atlas with complete contact details and instant local UI synchronization.
-- **100% Working Official Web Links**: Verified HTTPS corporate domains and guaranteed Google B2B / MIDC Industrial Profiles (no dead links).
-- **Auto-Healing MongoDB Atlas Cloud Database**: Cloud-hosted storage connected via `MONGODB_SRV` with automatic master file fallback and resilient self-seeding.
-- **Instant CSV Export**: Filtered or full directory export with one click.
+  - **Mode A (Live URL & Corporate Domain Scanner)**: Accepts full URLs or bare domains (e.g. `laxmi.com`, `iolcp.com`, `jubilantingrevia.com`, `tcpl.in`). Concurrently scans `/` and `/contact-us`, extracting real-time meta descriptions, verified telephone landlines, sales emails, and plant addresses with live HTTP latency telemetry.
+  - **Mode B (Technical Spec & Knowledge Graph with Real-Time HTTP Probing)**: Multi-term technical search across Indian chemical and packaging plants with acronym expansion (`EtOAc`, `PU`, `PA`, `EVOH`, `NTNK`, `BOPP`), state targeting, and parallel live HTTP probing.
+  - **1-Click Save to Directory**: Save newly scouted leads from the live web directly into MongoDB Atlas.
+- **Instant CSV Export**: Filtered export including State, Ethyl Acetate Role, Solvents Handled, and Key Applications.
 - **Lead Bookmarking**: Save leads locally for review and offline tracking.
 - **Zero-Dependency Modern Frontend**: Vanilla JS and high-performance CSS with dark-mode aesthetic and glassmorphism.
 
@@ -129,30 +141,33 @@ http://localhost:3000
 `GET /api/manufacturers`
 
 **Query Parameters:**
+- `state` (optional): Filter by Indian state / UT (e.g., `Gujarat`, `Maharashtra`, `Tamil Nadu`, `Dadra and Nagar Haveli and Daman and Diu`).
 - `category` (optional): Filter by domain (`Barrier & Extrusion Films` or `Printing Inks, Adhesives & Masterbatch`).
 - `subCategory` (optional): Filter by specialization (e.g., `Vacuum Pouches`, `Flexo Inks`, `Adhesives`).
-- `city` (optional): Filter by city or cluster (e.g., `Pune`, `Tarapur`, `Vasai`, `Aurangabad`).
-- `industrialArea` (optional): Filter by MIDC area (e.g., `Chakan`, `Waluj`, `TTC`).
-- `query` (optional): Free-text search term across company name, products, address, etc.
+- `city` (optional): Filter by city or cluster (e.g., `Sanand`, `Vapi`, `Pune`, `Chennai`, `Silvassa`).
+- `industrialArea` (optional): Filter by industrial estate (e.g., `Sanand GIDC`, `Chakan MIDC`, `SIPCOT`).
+- `query` (optional): Free-text search term across company name, products, address, state, etc.
 - `verified` (optional): Set to `true` for verified units only.
 
 **Sample Response:**
 ```json
 {
   "success": true,
-  "total": 48,
+  "total": 81,
   "data": [
     {
-      "id": "mh-001",
-      "name": "Cosmo First Limited (formerly Cosmo Films)",
+      "id": "gj-001",
+      "name": "Vishakha Polyfab Pvt. Ltd.",
       "category": "Barrier & Extrusion Films",
-      "subCategories": ["PA/EVOH Barrier Films", "Extrusion Films", "Laminated Films"],
-      "products": ["High Barrier EVOH Co-extruded Films", "BOPP Barrier Films"],
-      "address": "AL-24, MIDC Industrial Area, Waluj, Chhatrapati Sambhaji Nagar (Aurangabad), Maharashtra 431136",
-      "city": "Chhatrapati Sambhaji Nagar (Aurangabad)",
-      "phone": "+91-240-6660000",
-      "salesEmail": "sales@cosmofirst.com",
-      "website": "https://www.cosmofirst.com",
+      "subCategories": ["PA/EVOH Barrier Films", "Extrusion Films", "Vacuum Pouches"],
+      "products": ["9-Layer High Barrier EVOH/PA Films", "Vacuum Pouches"],
+      "state": "Gujarat",
+      "city": "Ahmedabad",
+      "industrialArea": "Sanand GIDC",
+      "address": "Plot No. 1205, GIDC Phase II, Sanand, Ahmedabad, Gujarat 382110",
+      "phone": "+91-79-61900000",
+      "salesEmail": "info@vishakhapolyfab.com",
+      "website": "https://www.vishakhapolyfab.com",
       "verified": true
     }
   ]
@@ -167,20 +182,23 @@ http://localhost:3000
 **Sample Response:**
 ```json
 {
-  "totalCount": 48,
-  "barrierFilmsCount": 25,
-  "inksAdhesivesCount": 23,
-  "uniqueClusters": 18,
-  "verifiedCount": 48,
-  "clustersList": [
-    "Pune / Chakan",
-    "Tarapur / Boisar",
-    "Vasai / Palghar",
-    "Chhatrapati Sambhaji Nagar (Aurangabad)",
-    "Ambernath / Thane",
-    "Navi Mumbai",
-    "Mumbai"
-  ]
+  "totalCount": 81,
+  "barrierFilmsCount": 42,
+  "inksAdhesivesCount": 39,
+  "uniqueClusters": 24,
+  "statesCount": 9,
+  "statesList": [
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Gujarat",
+    "Haryana",
+    "Karnataka",
+    "Maharashtra",
+    "Tamil Nadu",
+    "Telangana",
+    "Uttar Pradesh",
+    "West Bengal"
+  ],
+  "verifiedCount": 81
 }
 ```
 
@@ -192,11 +210,12 @@ http://localhost:3000
 **Request Body:**
 ```json
 {
-  "query": "Manufacturers of Extrusion films",
-  "city": "Maharashtra"
+  "query": "7 layer PA EVOH barrier film",
+  "state": "Gujarat",
+  "city": "Sanand Vapi"
 }
 ```
-*Tip: Passing a full URL (e.g., `{"query": "https://www.cosmofirst.com"}`) triggers the Mode A live website DOM extractor.*
+*Tip: Passing a full URL (e.g., `{"query": "https://www.vishakhapolyfab.com"}`) triggers the Mode A live website DOM extractor.*
 
 ---
 

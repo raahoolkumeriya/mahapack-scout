@@ -268,8 +268,8 @@ async function scrapeLiveUrl(rawInput) {
         if (detectedAddress) return;
         const txt = cleanText(page$(el).text());
         if (txt.length >= 25 && txt.length <= 260 && 
-            /MIDC|Industrial Area|Industrial Estate|Gat No|Plot No|Chakan|Waluj|Turbhe|TTC|Tarapur|Boisar|Vasai|Ambernath|Dombivli|Bhosari|Taloja|Wagle|Kurkumbh|Ranjangaon/i.test(txt) &&
-            /Maharashtra|Mumbai|Pune|Thane|Palghar|Aurangabad|Raigad/i.test(txt)) {
+            /MIDC|GIDC|SIPCOT|KIADB|RIICO|UPSIDC|Industrial Area|Industrial Estate|Gat No|Plot No|Phase|Chakan|Waluj|Turbhe|TTC|Tarapur|Boisar|Vasai|Ambernath|Dombivli|Bhosari|Taloja|Wagle|Kurkumbh|Ranjangaon|Sanand|Vapi|Ankleshwar|Dahej|Morbi|Silvassa|Daman|Sriperumbudur|Gummidipoondi|Peenya|Noida|Bhiwadi|Faridabad|Gurugram/i.test(txt) &&
+            /India|Maharashtra|Gujarat|Tamil Nadu|Karnataka|Telangana|Uttar Pradesh|Haryana|West Bengal|Daman|Silvassa|Delhi|Mumbai|Pune|Thane|Chennai|Bengaluru|Hyderabad/i.test(txt)) {
           detectedAddress = txt;
         }
       });
@@ -300,11 +300,15 @@ async function scrapeLiveUrl(rawInput) {
 
 // 1. Get filtered manufacturers
 app.get('/api/manufacturers', async (req, res) => {
-  const { category, subCategory, city, industrialArea, query, verified } = req.query;
+  const { state, category, subCategory, city, industrialArea, query, verified, role, solvent, application } = req.query;
   let list = await getManufacturersList();
 
+  if (state && state !== 'all') {
+    list = list.filter(item => item.state && item.state.toLowerCase() === state.toLowerCase());
+  }
+
   if (category && category !== 'all') {
-    list = list.filter(item => item.category && item.category.toLowerCase() === category.toLowerCase());
+    list = list.filter(item => item.category && item.category.toLowerCase().includes(category.toLowerCase()));
   }
 
   if (subCategory && subCategory !== 'all') {
@@ -326,6 +330,24 @@ app.get('/api/manufacturers', async (req, res) => {
     );
   }
 
+  if (role && role !== 'all') {
+    list = list.filter(item => 
+      (item.ethylAcetateRole || '').toLowerCase().includes(role.toLowerCase())
+    );
+  }
+
+  if (solvent && solvent !== 'all') {
+    list = list.filter(item => 
+      (item.solventsHandled || []).some(s => s.toLowerCase().includes(solvent.toLowerCase()))
+    );
+  }
+
+  if (application && application !== 'all') {
+    list = list.filter(item => 
+      (item.applications || []).some(a => a.toLowerCase().includes(application.toLowerCase()))
+    );
+  }
+
   if (verified === 'true') {
     list = list.filter(item => item.verified === true);
   }
@@ -338,7 +360,11 @@ app.get('/api/manufacturers', async (req, res) => {
       const matchAddress = (item.address || '').toLowerCase().includes(q);
       const matchProducts = (item.products || []).some(p => p.toLowerCase().includes(q));
       const matchSub = (item.subCategories || []).some(s => s.toLowerCase().includes(q));
-      return matchName || matchDesc || matchAddress || matchProducts || matchSub;
+      const matchState = (item.state || '').toLowerCase().includes(q);
+      const matchRole = (item.ethylAcetateRole || '').toLowerCase().includes(q);
+      const matchSolvents = (item.solventsHandled || []).some(s => s.toLowerCase().includes(q));
+      const matchApps = (item.applications || []).some(a => a.toLowerCase().includes(q));
+      return matchName || matchDesc || matchAddress || matchProducts || matchSub || matchState || matchRole || matchSolvents || matchApps;
     });
   }
 
@@ -349,37 +375,60 @@ app.get('/api/manufacturers', async (req, res) => {
   });
 });
 
-// 2. Stats summary
+// 2. Stats summary (Pan-India & Ethyl Acetate Ecosystem)
 app.get('/api/stats', async (req, res) => {
   const list = await getManufacturersList();
   const category1 = list.filter(item => (item.category || '').includes('Barrier'));
   const category2 = list.filter(item => (item.category || '').includes('Printing Inks'));
+  const eaPlants = list.filter(item => item.ethylAcetateRole || (item.solventsHandled || []).some(s => s.toLowerCase().includes('ethyl acetate')));
+  const bulkProducers = list.filter(item => item.ethylAcetateRole === 'Bulk Producer');
+  const paintsCoatings = list.filter(item => item.ethylAcetateRole === 'Paints & Coatings');
+  const industrialGlues = list.filter(item => item.ethylAcetateRole === 'Industrial Glues' || item.ethylAcetateRole === 'Industrial Glues & Adhesives');
+  const packagingInks = list.filter(item => item.ethylAcetateRole === 'Food Packaging Inks');
+  const pharmaCosmetics = list.filter(item => item.ethylAcetateRole === 'Pharma API & Cosmetics' || item.ethylAcetateRole === 'Personal Care & Cosmetics');
+  const foodExtraction = list.filter(item => item.ethylAcetateRole === 'Food Decaffeination & Extraction');
 
   const clusters = new Set();
+  const states = new Set();
   list.forEach(i => {
     if (i.city) clusters.add(i.city);
+    if (i.state) states.add(i.state);
   });
 
   res.json({
     totalCount: list.length,
     barrierFilmsCount: category1.length,
     inksAdhesivesCount: category2.length,
+    ethylAcetateCount: eaPlants.length,
+    bulkProducersCount: bulkProducers.length,
+    paintsCoatingsCount: paintsCoatings.length,
+    industrialGluesCount: industrialGlues.length,
+    packagingInksCount: packagingInks.length,
+    pharmaCosmeticsCount: pharmaCosmetics.length,
+    foodExtractionCount: foodExtraction.length,
     uniqueClusters: clusters.size,
+    statesCount: states.size,
+    statesList: Array.from(states).sort(),
     verifiedCount: list.filter(i => i.verified).length,
-    clustersList: Array.from(clusters)
+    clustersList: Array.from(clusters).sort()
   });
 });
 
-// 3. Live Web Scout & Real-Time Intelligence Extractor
+// 3. Live Web Scout & Real-Time Intelligence Extractor (Pan-India)
 app.post('/api/search-web', async (req, res) => {
-  const { query, city } = req.body;
+  const { query, city, state: targetState } = req.body;
   
   if (!query || !query.trim()) {
     return res.status(400).json({ success: false, error: 'Search query is required' });
   }
 
   const rawQuery = query.trim();
-  const targetArea = (city && city !== 'all' && city !== 'Maharashtra') ? city : 'Maharashtra';
+  let targetArea = 'All India';
+  if (city && city !== 'all') {
+    targetArea = (targetState && targetState !== 'all') ? `${city}, ${targetState}` : city;
+  } else if (targetState && targetState !== 'all') {
+    targetArea = targetState;
+  }
   const startTime = Date.now();
 
   console.log(`[WebScout] Real-time scanning: "${rawQuery}" in [${targetArea}]`);
@@ -399,6 +448,24 @@ app.post('/api/search-web', async (req, res) => {
         ? ['PA/EVOH Barrier Films', 'Extrusion Films', 'Vacuum Pouches'] 
         : ['Printing Inks for Flexible Packaging', 'Lamination & Poly Inks'];
 
+      const detectedStateName = (targetState && targetState !== 'all') ? targetState : 
+        (liveData.address && /Gujarat/i.test(liveData.address) ? 'Gujarat' :
+         liveData.address && /Tamil Nadu/i.test(liveData.address) ? 'Tamil Nadu' :
+         liveData.address && /Karnataka/i.test(liveData.address) ? 'Karnataka' :
+         liveData.address && /Telangana/i.test(liveData.address) ? 'Telangana' :
+         liveData.address && /Haryana/i.test(liveData.address) ? 'Haryana' :
+         liveData.address && /Uttar Pradesh/i.test(liveData.address) ? 'Uttar Pradesh' :
+         liveData.address && /West Bengal/i.test(liveData.address) ? 'West Bengal' : 'Maharashtra');
+
+      const detectedCityName = (city && city !== 'all') ? city : 
+        (detectedStateName === 'Gujarat' ? 'Sanand / Vapi GIDC' :
+         detectedStateName === 'Tamil Nadu' ? 'Chennai / Sriperumbudur' :
+         detectedStateName === 'Karnataka' ? 'Bengaluru' :
+         detectedStateName === 'Telangana' ? 'Hyderabad' :
+         detectedStateName === 'Uttar Pradesh' ? 'Noida / Greater Noida' :
+         detectedStateName === 'Haryana' ? 'Gurugram / Faridabad' :
+         detectedStateName === 'West Bengal' ? 'Kolkata' : 'Mumbai MMR');
+
       const result = {
         id: `web-live-${Date.now()}`,
         name: liveData.title.split(/[-–|:•]/)[0].trim() || liveData.domain,
@@ -407,9 +474,10 @@ app.post('/api/search-web', async (req, res) => {
         products: ['Live Scanned Packaging Solutions', 'Custom Flexible Packaging Webs'],
         snippet: liveData.desc ? `Live Web Description: "${liveData.desc}"` : `Real-time web extract from ${liveData.url}. Direct verified contact dossier.`,
         url: liveData.url,
-        detectedCity: targetArea !== 'Maharashtra' ? targetArea : 'Mumbai MMR',
-        industrialArea: 'MIDC Industrial Corridor',
-        address: liveData.address || `${targetArea}, Maharashtra`,
+        state: detectedStateName,
+        detectedCity: detectedCityName,
+        industrialArea: 'Industrial Corridor',
+        address: liveData.address || `${detectedCityName}, ${detectedStateName}, India`,
         pincode: '400001',
         phones: liveData.phones.length ? liveData.phones : ['+91-22-61000000'],
         phone: liveData.phones[0] || '+91-22-61000000',
@@ -418,7 +486,7 @@ app.post('/api/search-web', async (req, res) => {
         email: liveData.emails[0] || `sales@${liveData.domain.replace(/^www\./, '')}`,
         salesEmail: liveData.emails[0] || `sales@${liveData.domain.replace(/^www\./, '')}`,
         contactPerson: 'Sales & Corporate Plant Desk',
-        isMhVerified: true,
+        verified: true,
         source: `⚡ Live Web Scanned (HTTP 200 • ${liveData.elapsed}ms)`,
         liveWebData: {
           status: 200,
@@ -440,9 +508,10 @@ app.post('/api/search-web', async (req, res) => {
     }
   }
 
-  // MODE B: Intelligent Knowledge Graph Search with Live Parallel HTTP Probing
+  // MODE B: Intelligent Knowledge Graph Search with Live Parallel HTTP Probing across India
   let cleanQuery = rawQuery.replace(/[\/,]+/g, ' ');
   cleanQuery = cleanQuery
+    .replace(/\bEA\b|\bEtOAc\b/gi, 'ethyl acetate')
     .replace(/\bPU\b/gi, 'polyurethane adhesive')
     .replace(/\bPA\b/gi, 'polyamide nylon barrier')
     .replace(/\bEVOH\b/gi, 'EVOH high barrier')
@@ -450,36 +519,55 @@ app.post('/api/search-web', async (req, res) => {
     .replace(/\bNTNK\b/gi, 'non toluene non ketone printing inks')
     .replace(/\bBOPP\b/gi, 'BOPP barrier films')
     .replace(/\bBOPET\b/gi, 'BOPET specialty films')
-    .replace(/\bMH\b/gi, 'Maharashtra');
+    .replace(/\bMH\b/gi, 'Maharashtra')
+    .replace(/\bGJ\b/gi, 'Gujarat')
+    .replace(/\bTN\b/gi, 'Tamil Nadu')
+    .replace(/\bUP\b/gi, 'Uttar Pradesh')
+    .replace(/\bKA\b/gi, 'Karnataka')
+    .replace(/\bTS\b|\bTG\b/gi, 'Telangana');
 
   const all = await getManufacturersList();
   const qTerms = cleanQuery.toLowerCase().split(/\s+/).filter(t => t.length > 2);
-  const cityWords = targetArea.toLowerCase().split(/[\s,/\-]+/).filter(w => w.length > 2 && w !== 'maharashtra');
+  const cityWords = (city && city !== 'all') ? city.toLowerCase().split(/[\s,/\-]+/).filter(w => w.length > 2) : [];
+  const stateFilter = (targetState && targetState !== 'all') ? targetState.toLowerCase() : null;
 
-  // Score all manufacturers based on query relevance and city match
+  // Score all manufacturers based on query relevance, state match, and city match
   const scored = all.map(m => {
     let score = 0;
     const nameText = (m.name || '').toLowerCase();
     const prodText = (m.products || []).join(' ').toLowerCase();
     const subText = (m.subCategories || []).join(' ').toLowerCase();
+    const roleText = (m.ethylAcetateRole || '').toLowerCase();
+    const solvText = (m.solventsHandled || []).join(' ').toLowerCase();
+    const appText = (m.applications || []).join(' ').toLowerCase();
     const descText = (m.description || '').toLowerCase();
     const areaText = ((m.industrialArea || '') + ' ' + (m.address || '') + ' ' + (m.city || '')).toLowerCase();
+    const itemState = (m.state || '').toLowerCase();
 
     qTerms.forEach(term => {
-      if (['packaging', 'manufacturer', 'manufacturers', 'contact', 'phone', 'address', 'maharashtra', 'factory', 'plant'].includes(term)) return;
+      if (['packaging', 'manufacturer', 'manufacturers', 'contact', 'phone', 'address', 'factory', 'plant', 'india'].includes(term)) return;
       if (nameText.includes(term)) score += 15;
       if (prodText.includes(term)) score += 10;
       if (subText.includes(term)) score += 8;
+      if (roleText.includes(term)) score += 14;
+      if (solvText.includes(term)) score += 14;
+      if (appText.includes(term)) score += 12;
       if (descText.includes(term)) score += 6;
       if (areaText.includes(term)) score += 4;
+      if (itemState.includes(term)) score += 10;
     });
 
-    const isCityMatch = cityWords.length === 0 || cityWords.some(w => areaText.includes(w));
-    if (isCityMatch) {
-      score += 15;
+    const isStateMatch = !stateFilter || itemState.includes(stateFilter);
+    if (stateFilter && isStateMatch) {
+      score += 25;
     }
 
-    return { item: m, score, isCityMatch };
+    const isCityMatch = cityWords.length === 0 || cityWords.some(w => areaText.includes(w) || (m.city || '').toLowerCase().includes(w));
+    if (isCityMatch && cityWords.length > 0) {
+      score += 20;
+    }
+
+    return { item: m, score, isStateMatch, isCityMatch };
   });
 
   // Filter those with meaningful score (or all if general query)
@@ -488,15 +576,15 @@ app.post('/api/search-web', async (req, res) => {
     eligible = scored;
   }
 
-  // Tier 1: Matching target city
-  const tier1 = eligible.filter(s => s.isCityMatch).sort((a, b) => b.score - a.score);
+  // Tier 1: Matching target state & city
+  const tier1 = eligible.filter(s => s.isStateMatch && s.isCityMatch).sort((a, b) => b.score - a.score);
 
-  // Tier 2: Broader Maharashtra state units if Tier 1 has fewer than 4 units
-  const tier2 = eligible.filter(s => !s.isCityMatch).sort((a, b) => b.score - a.score);
+  // Tier 2: Matching state or broader Indian units
+  const tier2 = eligible.filter(s => !(s.isStateMatch && s.isCityMatch)).sort((a, b) => b.score - a.score);
 
   let selected = [...tier1];
-  if (selected.length < 4 && tier2.length > 0) {
-    const needed = 6 - selected.length;
+  if (selected.length < 5 && tier2.length > 0) {
+    const needed = 8 - selected.length;
     tier2.slice(0, needed).forEach(s => {
       s.isExpanded = true;
       selected.push(s);
@@ -507,7 +595,7 @@ app.post('/api/search-web', async (req, res) => {
 
   // Parallel Real-Time Live HTTP Probing of candidate websites
   const verifiedLeads = await Promise.all(topCandidates.map(async ({ item: m, isExpanded }) => {
-    let sourceLabel = isExpanded ? '📍 Nearby Maharashtra Hub (Expanded)' : 'Verified Maharashtra MIDC Unit';
+    let sourceLabel = isExpanded ? `📍 Nearby Hub (${m.state || 'India'})` : `Verified ${m.state || 'India'} Unit`;
     let liveWebData = null;
     let liveTitle = '';
     let liveDesc = '';
@@ -573,7 +661,7 @@ app.post('/api/search-web', async (req, res) => {
         }
       } catch (e) {
         // Fallback gracefully without breaking lead
-        sourceLabel = isExpanded ? '📍 Nearby Maharashtra Hub (Expanded)' : 'Verified Maharashtra MIDC Unit';
+        sourceLabel = isExpanded ? `📍 Nearby Hub (${m.state || 'India'})` : `Verified ${m.state || 'India'} Unit`;
       }
     }
 
@@ -589,15 +677,16 @@ app.post('/api/search-web', async (req, res) => {
     }
 
     return {
-      id: `verified-mh-${m.id}`,
+      id: `verified-lead-${m.id}`,
       name: m.name,
       category: m.category,
       subCategories: m.subCategories,
       products: m.products,
       snippet: snippet,
       url: m.website || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.name + ' ' + m.city)}`,
+      state: m.state || 'India',
       detectedCity: m.city,
-      industrialArea: m.industrialArea || 'MIDC Zone',
+      industrialArea: m.industrialArea || 'Industrial Zone',
       address: m.address,
       pincode: m.pincode,
       phone: combinedPhones[0] || m.phone || '+91-22-61000000',
@@ -608,7 +697,7 @@ app.post('/api/search-web', async (req, res) => {
       emails: combinedEmails.length ? combinedEmails : [m.salesEmail || m.email].filter(Boolean),
       contactPerson: m.contactPerson || 'Sales & Technical Team',
       gstin: m.gstin,
-      isMhVerified: true,
+      verified: true,
       source: sourceLabel,
       liveWebData: liveWebData
     };
@@ -753,10 +842,14 @@ app.delete('/api/manufacturers/:id', async (req, res) => {
   });
 });
 
-// 5. CSV Export Endpoint directly from MongoDB
+// 5. CSV Export Endpoint directly from MongoDB (Pan-India)
 app.get('/api/export', async (req, res) => {
-  const { category, subCategory, city } = req.query;
+  const { state, category, subCategory, city, role, application } = req.query;
   let list = await getManufacturersList();
+
+  if (state && state !== 'all') {
+    list = list.filter(item => item.state && item.state.toLowerCase() === state.toLowerCase());
+  }
 
   if (category && category !== 'all') {
     list = list.filter(item => item.category && item.category.toLowerCase() === category.toLowerCase());
@@ -774,9 +867,22 @@ app.get('/api/export', async (req, res) => {
     );
   }
 
+  if (role && role !== 'all') {
+    list = list.filter(item => 
+      (item.ethylAcetateRole || '').toLowerCase().includes(role.toLowerCase())
+    );
+  }
+
+  if (application && application !== 'all') {
+    list = list.filter(item => 
+      (item.applications || []).some(a => a.toLowerCase().includes(application.toLowerCase()))
+    );
+  }
+
   const headers = [
     'ID', 'Company Name', 'Category', 'Sub-Categories', 'Products',
-    'City', 'Industrial Area', 'Full Address', 'Pincode',
+    'Ethyl Acetate Role', 'Solvents Handled', 'Key Applications',
+    'State', 'City', 'Industrial Area', 'Full Address', 'Pincode',
     'Phone', 'Mobile', 'Email', 'Sales Email', 'Website', 'GSTIN'
   ];
 
@@ -789,6 +895,10 @@ app.get('/api/export', async (req, res) => {
       `"${(m.category || '').replace(/"/g, '""')}"`,
       `"${(m.subCategories || []).join('; ').replace(/"/g, '""')}"`,
       `"${(m.products || []).join('; ').replace(/"/g, '""')}"`,
+      `"${(m.ethylAcetateRole || 'General Packaging/Inks').replace(/"/g, '""')}"`,
+      `"${(m.solventsHandled || []).join('; ').replace(/"/g, '""')}"`,
+      `"${(m.applications || []).join('; ').replace(/"/g, '""')}"`,
+      `"${(m.state || '').replace(/"/g, '""')}"`,
       `"${(m.city || '').replace(/"/g, '""')}"`,
       `"${(m.industrialArea || '').replace(/"/g, '""')}"`,
       `"${(m.address || '').replace(/"/g, '""')}"`,
@@ -804,7 +914,7 @@ app.get('/api/export', async (req, res) => {
   });
 
   res.setHeader('Content-Type', 'text/csv');
-  res.setHeader('Content-Disposition', 'attachment; filename="maharashtra_packaging_inks_manufacturers.csv"');
+  res.setHeader('Content-Disposition', 'attachment; filename="india_packaging_inks_solvents_directory.csv"');
   res.status(200).send(csvRows.join('\r\n'));
 });
 
@@ -815,6 +925,6 @@ app.get('*', (req, res) => {
 
 // Start Server & Connect MongoDB
 app.listen(PORT, async () => {
-  console.log(`🚀 MahaPack Scout server running on http://localhost:${PORT}`);
+  console.log(`🚀 IndiaPack Scout server running on http://localhost:${PORT}`);
   await initMongoDB();
 });

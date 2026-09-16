@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MahaPack Scout | Maharashtra Packaging Films, Inks & Adhesives Intelligence</title>
-  <meta name="description" content="High-speed intelligence platform and live web scout for Extrusion films, PA/EVOH barrier films, vacuum pouches, thermoforming films, flexible packaging inks, adhesives, and masterbatches across Maharashtra.">
+  <title>IndiaPack Scout | All-India Packaging Films, Inks & Adhesives Intelligence</title>
+  <meta name="description" content="High-speed Pan-India intelligence platform and live web scout for Extrusion films, PA/EVOH barrier films, vacuum pouches, thermoforming films, flexible packaging inks, adhesives, and masterbatches across Maharashtra, Gujarat, Tamil Nadu, Daman, Silvassa, Karnataka, Telangana, NCR, and India.">
   
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +24,9 @@
         </div>
         <div class="brand-text">
           <div class="brand-title">
-            <span class="brand-prefix">MAHA</span><span class="brand-highlight">PACK</span> <span class="brand-badge">SCOUT</span>
+            <span class="brand-prefix">INDIA</span><span class="brand-highlight">PACK</span> <span class="brand-badge">SCOUT</span>
           </div>
-          <div class="brand-sub">Maharashtra Industrial Packaging & Inks Intelligence</div>
+          <div class="brand-sub">Pan-India Packaging & Inks B2B Intelligence</div>
         </div>
       </div>
 
@@ -38,10 +38,10 @@
 
         <div class="region-badge">
           <span class="pulse-dot"></span>
-          <span>Region: Maharashtra Only (MIDC Zones)</span>
+          <span>Coverage: Pan-India (All Major Hubs)</span>
         </div>
 
-        <button id="btnOpenWebScout" class="btn btn-scout" title="Search Live Web for fresh Maharashtra suppliers">
+        <button id="btnOpenWebScout" class="btn btn-scout" title="Search Live Web for fresh suppliers across India">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
           <span>Live Web Scout</span>
           <span class="scout-badge">LIVE</span>
@@ -69,11 +69,11 @@
           <span class="pill-tag"><span class="pill-icon">📦</span> Domain 1: Extrusion & High-Barrier Films</span>
           <span class="pill-tag"><span class="pill-icon">🧪</span> Domain 2: Flexible Inks, Adhesives & Masterbatches</span>
         </div>
-        <h1 class="hero-heading">Verified Manufacturers & B2B Web Scout in <span class="gradient-text">Maharashtra</span></h1>
+        <h1 class="hero-heading">Verified Manufacturers & B2B Web Scout across <span class="gradient-text">India</span></h1>
         <p class="hero-lead">
-          Direct phone numbers, plant addresses, MIDC zones, and sales desks for 
+          Direct phone numbers, plant addresses, GIDC/MIDC/SIPCOT corridors, and sales desks for 
           <strong>PA/EVOH barrier films, vacuum pouches, thermoforming webs, lidding films</strong> and 
-          <strong>gravure/flexo inks, poly inks, lamination adhesives, and masterbatches</strong>.
+          <strong>gravure/flexo inks, poly inks, lamination adhesives, and masterbatches</strong> across India.
         </p>
       </div>
 
@@ -85,7 +85,17 @@
           </div>
           <div class="stat-data">
             <div class="stat-number" id="statTotal">--</div>
-            <div class="stat-label">Verified Units in MH</div>
+            <div class="stat-label">Verified Industrial Plants</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper cyan">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          </div>
+          <div class="stat-data">
+            <div class="stat-number" id="statStates">--</div>
+            <div class="stat-label">States & UTs Covered</div>
           </div>
         </div>
 
@@ -115,7 +125,17 @@
           </div>
           <div class="stat-data">
             <div class="stat-number" id="statClusters">--</div>
-            <div class="stat-label">MIDC Clusters Covered</div>
+            <div class="stat-label">Industrial Clusters</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+          </div>
+          <div class="stat-data">
+            <div class="stat-number" id="statEthylAcetate">--</div>
+            <div class="stat-label">Ethyl Acetate & Solvents</div>
           </div>
         </div>
       </div>
@@ -154,52 +174,120 @@
           <span class="tab-badge" id="badgeBarrier">--</span>
         </button>
         <button class="domain-tab" data-domain="Printing Inks, Adhesives & Masterbatch">
-          <span>🧪 Inks, Coatings, Adhesives & Masterbatch</span>
+          <span>🎨 Inks, Coatings & Adhesives</span>
           <span class="tab-badge" id="badgeInks">--</span>
+        </button>
+        <button class="domain-tab" data-domain="Bulk Solvents & Chemicals">
+          <span>🧪 Ethyl Acetate & Solvents</span>
+          <span class="tab-badge" id="badgeSolvents">--</span>
         </button>
       </div>
 
       <!-- ADVANCED FILTERS -->
       <div class="filters-row">
+        <!-- State / UT Selector -->
+        <div class="filter-item state-filter-item">
+          <label for="stateSelect">State / UT:</label>
+          <select id="stateSelect">
+            <option value="all">All India (11 States / UTs)</option>
+            <option value="Maharashtra">Maharashtra (59 Units)</option>
+            <option value="Gujarat">Gujarat (14 Units)</option>
+            <option value="Dadra and Nagar Haveli and Daman and Diu">Daman & Silvassa (4 Units)</option>
+            <option value="Tamil Nadu">Tamil Nadu (6 Units)</option>
+            <option value="Karnataka">Karnataka (3 Units)</option>
+            <option value="Telangana">Telangana (3 Units)</option>
+            <option value="Uttar Pradesh">Uttar Pradesh (5 Units)</option>
+            <option value="Haryana">Haryana (3 Units)</option>
+            <option value="Punjab">Punjab (Barnala Complex)</option>
+            <option value="Kerala">Kerala (Cochin / Synthite)</option>
+            <option value="West Bengal">West Bengal (1 Unit)</option>
+          </select>
+        </div>
+
+        <!-- Industrial Cluster Filter -->
+        <div class="filter-item cluster-filter-item">
+          <label for="citySelect">City / Cluster:</label>
+          <select id="citySelect">
+            <option value="all">All Industrial Clusters</option>
+            <optgroup label="Maharashtra Hubs" id="clusterGroupMH">
+              <option value="Mahad">Mahad MIDC (Acetyls & Adhesives Hub)</option>
+              <option value="Lote Parshuram">Lote Parshuram MIDC (Chiplun)</option>
+              <option value="Mumbai">Mumbai MMR & Suburbs</option>
+              <option value="Pune">Pune (Chakan, Bhosari, Kurkumbh, Nira)</option>
+              <option value="Thane">Thane & Bhiwandi</option>
+              <option value="Navi Mumbai">Navi Mumbai (TTC, Turbhe, Rabale, Taloja)</option>
+              <option value="Tarapur">Tarapur MIDC / Boisar</option>
+              <option value="Aurangabad">Chhatrapati Sambhaji Nagar (Waluj)</option>
+              <option value="Vasai">Vasai-Virar / Palghar</option>
+              <option value="Ambernath">Ambernath & Dombivli MIDC</option>
+              <option value="Khopoli">Khopoli & Taloja (Raigad)</option>
+              <option value="Jalgaon">Jalgaon MIDC</option>
+            </optgroup>
+            <optgroup label="Gujarat & Daman/Silvassa Hubs" id="clusterGroupGJ">
+              <option value="Sanand">Sanand GIDC (Ahmedabad)</option>
+              <option value="Vapi">Vapi GIDC (Valsad)</option>
+              <option value="Ankleshwar">Ankleshwar & Bharuch GIDC</option>
+              <option value="Dahej">Dahej PCPIR Special Economic Zone</option>
+              <option value="Silvassa">Silvassa (Dadra & Nagar Haveli)</option>
+              <option value="Daman">Daman Industrial Area</option>
+            </optgroup>
+            <optgroup label="South India Hubs" id="clusterGroupSouth">
+              <option value="Chennai">Chennai (Sriperumbudur / Ambattur)</option>
+              <option value="Theni">Theni (Tata Decaffeination EOU)</option>
+              <option value="Bengaluru">Bengaluru (Peenya / Bommasandra)</option>
+              <option value="Hyderabad">Hyderabad (Cherlapally / Choutuppal)</option>
+              <option value="Kolenchery">Kolenchery (Cochin Spice Extraction)</option>
+            </optgroup>
+            <optgroup label="North & East India Hubs" id="clusterGroupNorth">
+              <option value="Barnala">Barnala (IOLCP Complex, Punjab)</option>
+              <option value="Noida">Noida & Greater Noida (UPSIDC)</option>
+              <option value="Gajraula">Gajraula (Jubilant Ingrevia, UP)</option>
+              <option value="Gurugram">Gurugram, Bawal & Faridabad</option>
+              <option value="Kolkata">Kolkata & Howrah</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Ethyl Acetate / Solvents Sector Filter -->
+        <div class="filter-item">
+          <label for="eaSectorSelect">Ethyl Acetate Sector:</label>
+          <select id="eaSectorSelect">
+            <option value="all">All Sectors & Applications</option>
+            <option value="Bulk Producer">🏭 Bulk Ethyl Acetate Producers (Laxmi, Jubilant, IOL, GNFC, Godavari)</option>
+            <option value="Paints & Coatings">🎨 Paints & Industrial Finishes (Automotive Clear Coats, Primers)</option>
+            <option value="Industrial Glues">🧪 Industrial Glues & Laminating Adhesives (PU 2K, Contact Cements)</option>
+            <option value="Food Packaging Inks">📦 Food Packaging Printing Inks (Rotogravure / Flexo)</option>
+            <option value="Pharma API & Cosmetics">💊 Pharmaceuticals & API Extraction / Nail Polish</option>
+            <option value="Food Decaffeination & Extraction">☕ Food & Beverage (Decaffeination & Spice Oleoresins)</option>
+            <option value="Emerging Tech & Electronics">⚡ Emerging Tech (Batteries, Semiconductor, 3D Smoothing)</option>
+          </select>
+        </div>
+
         <!-- Sub-Category Filter -->
         <div class="filter-item">
           <label for="subCategorySelect">Product Specialization:</label>
           <select id="subCategorySelect">
             <option value="all">All Product Sub-Categories</option>
-            <optgroup label="Films & Pouches (Domain 1)">
+            <optgroup label="Ethyl Acetate & Solvents">
+              <option value="Ethyl Acetate Bulk Producer">Bulk Ethyl Acetate Producer</option>
+              <option value="Bio-Ethyl Acetate Bulk Producer">Bio-Ethyl Acetate (USDA Certified)</option>
+              <option value="Pharma Grade Solvents">Pharma Grade & Redistilled Solvents</option>
+              <option value="Industrial Finishes">Industrial Finishes & Automotive Clear Coats</option>
+              <option value="Industrial Glues">Industrial Glues & Contact Cements</option>
+              <option value="Decaffeination and Extraction">Coffee Decaffeination & Botanical Extracts</option>
+            </optgroup>
+            <optgroup label="Films & Pouches">
               <option value="PA/EVOH Barrier Films">PA/EVOH Barrier Films (7-9 Layer)</option>
               <option value="Extrusion Films">Multilayer Blown/Cast Extrusion Films</option>
               <option value="Laminated Films">Barrier Laminated Films</option>
               <option value="Vacuum Pouches">Co-extruded & Laminated Vacuum Pouches</option>
-              <option value="Lidding Films">Peelable & Anti-Fog Lidding Films</option>
-              <option value="Thermoforming Films">Thermoforming Bottom & Top Webs</option>
             </optgroup>
-            <optgroup label="Inks, Adhesives & Chemistry (Domain 2)">
+            <optgroup label="Inks & Adhesives">
               <option value="Printing Inks for Flexible Packaging">Flexible Packaging Gravure Inks</option>
               <option value="Flexo Inks">Flexographic Printing Inks</option>
               <option value="Lamination and Poly Inks">Lamination & Poly Inks (NTNK / PU)</option>
-              <option value="Adhesives">PU Lamination Adhesives (Solventless/SB)</option>
-              <option value="Coatings">Barrier, Heat-Seal & OPV Coatings</option>
-              <option value="Masterbatch">White, Black, Color & Additive Masterbatch</option>
+              <option value="Solventless & PU Adhesives">PU Lamination Adhesives (Solventless/SB)</option>
             </optgroup>
-          </select>
-        </div>
-
-        <!-- Maharashtra MIDC Cluster Filter -->
-        <div class="filter-item">
-          <label for="citySelect">Maharashtra MIDC Cluster:</label>
-          <select id="citySelect">
-            <option value="all">All Maharashtra Industrial Hubs</option>
-            <option value="Mumbai">Mumbai MMR & Suburbs</option>
-            <option value="Pune">Pune (Chakan, Bhosari, Kurkumbh)</option>
-            <option value="Thane">Thane & Bhiwandi</option>
-            <option value="Navi Mumbai">Navi Mumbai (TTC, Turbhe, Mahape, Rabale)</option>
-            <option value="Tarapur">Tarapur MIDC / Boisar</option>
-            <option value="Aurangabad">Chhatrapati Sambhaji Nagar (Waluj MIDC)</option>
-            <option value="Vasai">Vasai-Virar / Palghar</option>
-            <option value="Ambernath">Ambernath & Dombivli MIDC</option>
-            <option value="Khopoli">Khopoli & Taloja (Raigad)</option>
-            <option value="Jalgaon">Jalgaon MIDC</option>
           </select>
         </div>
 
@@ -208,12 +296,25 @@
           <label for="sortSelect">Sort By:</label>
           <select id="sortSelect">
             <option value="name-asc">Company Name (A - Z)</option>
+            <option value="state-asc">State / UT</option>
             <option value="city-asc">City / Industrial Cluster</option>
             <option value="established-desc">Experience (Oldest First)</option>
           </select>
         </div>
 
         <button id="btnResetFilters" class="btn-text-link" title="Reset all applied filters">Reset Filters</button>
+      </div>
+
+      <!-- QUICK SCOPES CHIPS ROW -->
+      <div class="quick-chips-row">
+        <span class="chips-label">Quick Scopes:</span>
+        <button class="quick-chip active" data-filter="all">🌐 All Ecosystem (105 Plants)</button>
+        <button class="quick-chip" data-filter="bulk-ea">🏭 Bulk EtOAc Producers</button>
+        <button class="quick-chip" data-filter="paints-coatings">🎨 Paints & Industrial Clear Coats</button>
+        <button class="quick-chip" data-filter="glues-adhesives">🧪 Glues & 2K PU Adhesives</button>
+        <button class="quick-chip" data-filter="packaging-inks">📦 Food Packaging Inks</button>
+        <button class="quick-chip" data-filter="pharma-decaf">💊 API Extraction & Decaf</button>
+        <button class="quick-chip" data-filter="emerging-tech">⚡ Batteries & 3D Smoothing</button>
       </div>
 
       <!-- ACTIVE FILTER TAGS -->
@@ -223,7 +324,7 @@
     <!-- RESULTS SECTION -->
     <div class="results-header">
       <div class="results-count-title">
-        Showing <span id="resultsCount">0</span> Verified Maharashtra Manufacturers
+        Showing <span id="resultsCount">0</span> Verified Industrial Plants & Suppliers
       </div>
       <div class="view-actions">
         <button id="btnQuickPrint" class="btn btn-sm btn-outline" title="Print this supplier list">
@@ -257,8 +358,8 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
           <div>
-            <h3>Live Maharashtra Web Scout & Lead Extractor</h3>
-            <p class="modal-subtitle">Directly scans live B2B indices & web pages for phone numbers, emails, and MIDC addresses in Maharashtra.</p>
+            <h3>Live Pan-India Web Scout & Lead Extractor</h3>
+            <p class="modal-subtitle">Directly scans live B2B indices & web pages for phone numbers, emails, and factory addresses across India.</p>
           </div>
         </div>
         <button id="btnCloseWebScout" class="modal-close-btn">&times;</button>
@@ -273,16 +374,40 @@
               <input type="text" id="scoutQueryInput" placeholder="e.g. 7-layer PA EVOH barrier film, vacuum pouches, flexo inks, OR enter website (e.g. www.bilcare.com)..." />
             </div>
             <div class="scout-select-field">
-              <label>Maharashtra Target Area</label>
+              <label>Target State / Region</label>
+              <select id="scoutStateInput">
+                <option value="all">All India (Pan-India)</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Daman & Silvassa</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Haryana">Haryana / NCR</option>
+                <option value="Uttar Pradesh">Uttar Pradesh (Noida / Gajraula)</option>
+                <option value="West Bengal">West Bengal</option>
+              </select>
+            </div>
+            <div class="scout-select-field">
+              <label>Industrial Cluster / City</label>
               <select id="scoutCityInput">
-                <option value="Maharashtra">Anywhere in Maharashtra</option>
-                <option value="Pune Chakan">Pune (Chakan / Bhosari MIDC)</option>
-                <option value="Mumbai MMR">Mumbai MMR & Thane</option>
+                <option value="all">All Clusters in State</option>
+                <option value="Mahad Lote">Mahad / Lote Parshuram (Chemicals & EtOAc)</option>
+                <option value="Sanand Vapi">Sanand / Vapi / Dahej (Gujarat)</option>
+                <option value="Barnala Punjab">Barnala (IOLCP Chemical Complex, Punjab)</option>
+                <option value="Silvassa Daman">Silvassa & Daman Hub</option>
+                <option value="Pune Chakan">Pune (Chakan / Bhosari / Nira MIDC)</option>
+                <option value="Mumbai MMR">Mumbai MMR, Thane & Ambernath</option>
+                <option value="Chennai Sriperumbudur">Chennai / Sriperumbudur (Tamil Nadu)</option>
+                <option value="Theni Tamil Nadu">Theni (Tata Decaffeination Plant)</option>
+                <option value="Kolenchery Cochin">Kolenchery / Cochin (Synthite Bio-Extracts)</option>
+                <option value="Bengaluru">Bengaluru / Peenya (Karnataka)</option>
+                <option value="Hyderabad">Hyderabad / Choutuppal (Telangana)</option>
+                <option value="Noida NCR">Noida, Greater Noida & Gajraula (UP)</option>
                 <option value="Tarapur Boisar">Tarapur MIDC (Palghar)</option>
                 <option value="Aurangabad Waluj">Chhatrapati Sambhaji Nagar (Waluj)</option>
-                <option value="Navi Mumbai TTC">Navi Mumbai (TTC / Turbhe / Rabale)</option>
-                <option value="Vasai Palghar">Vasai / Palghar</option>
-                <option value="Ambernath Dombivli">Ambernath / Dombivli MIDC</option>
               </select>
             </div>
             <button id="btnExecuteScout" class="btn btn-primary scout-btn-run">
@@ -294,14 +419,17 @@
           <!-- Quick Scout Query Chips -->
           <div class="quick-scout-chips">
             <span class="chips-label">Quick Real-Time Scans:</span>
-            <button class="chip-btn" data-query="7 layer PA EVOH barrier film manufacturer" data-city="Pune Chakan">7-Layer EVOH Film Pune</button>
-            <button class="chip-btn" data-query="vacuum pouches manufacturer contact" data-city="Tarapur Boisar">Vacuum Pouches Tarapur</button>
-            <button class="chip-btn" data-query="thermoforming lidding films factory address" data-city="Mumbai MMR">Thermoforming Lidding Mumbai</button>
-            <button class="chip-btn" data-query="flexo inks for flexible packaging manufacturer" data-city="Vasai Palghar">Flexo Inks Vasai</button>
-            <button class="chip-btn" data-query="solventless PU lamination adhesives manufacturer" data-city="Ambernath Dombivli">Solventless PU Adhesives</button>
-            <button class="chip-btn" data-query="color additive masterbatch for extrusion films" data-city="Navi Mumbai TTC">Masterbatch Navi Mumbai</button>
-            <button class="chip-btn" data-query="bilcare.com" data-city="Pune Chakan">🌐 bilcare.com (Live Probe)</button>
-            <button class="chip-btn" data-query="tcpl.in" data-city="Mumbai MMR">🌐 tcpl.in (Live Probe)</button>
+            <button class="chip-btn" data-query="ethyl acetate bulk manufacturer Mahad" data-state="Maharashtra" data-city="Mahad Lote">🧪 Ethyl Acetate Mahad MIDC</button>
+            <button class="chip-btn" data-query="bio based ethyl acetate NaturoEA" data-state="Maharashtra" data-city="Pune Chakan">🌱 Bio-Ethyl Acetate (Somaiya)</button>
+            <button class="chip-btn" data-query="IOL Chemicals Barnala ethyl acetate 100000 TPA" data-state="Punjab" data-city="Barnala Punjab">🏭 IOL Chemicals Barnala (Punjab)</button>
+            <button class="chip-btn" data-query="sugarcane decaffeination coffee plant Theni" data-state="Tamil Nadu" data-city="Theni Tamil Nadu">☕ Decaffeination Plant Theni</button>
+            <button class="chip-btn" data-query="solvent based PU lamination adhesives ethyl acetate" data-state="Maharashtra" data-city="Mumbai MMR">🧪 2K PU Adhesives Ambernath</button>
+            <button class="chip-btn" data-query="7 layer PA EVOH barrier film manufacturer" data-state="Gujarat" data-city="Sanand Vapi">7-Layer EVOH Sanand GIDC</button>
+            <button class="chip-btn" data-query="flexo inks for flexible packaging manufacturer" data-state="Tamil Nadu" data-city="Chennai Sriperumbudur">Flexo Inks Chennai</button>
+            <button class="chip-btn" data-query="laxmi.com" data-state="Maharashtra" data-city="Mahad Lote">🌐 laxmi.com (Live Probe)</button>
+            <button class="chip-btn" data-query="jubilantingrevia.com" data-state="Maharashtra" data-city="Pune Chakan">🌐 jubilantingrevia.com (Live Probe)</button>
+            <button class="chip-btn" data-query="iolcp.com" data-state="Punjab" data-city="Barnala Punjab">🌐 iolcp.com (Live Probe)</button>
+            <button class="chip-btn" data-query="bilcare.com" data-state="Maharashtra" data-city="Pune Chakan">🌐 bilcare.com (Live Probe)</button>
           </div>
         </div>
 
@@ -312,8 +440,8 @@
             <div class="radar-grid"></div>
           </div>
           <div class="scout-status-text">
-            <span id="scoutStatusMessage">Querying live web pages in Maharashtra industrial zones...</span>
-            <span class="scout-status-sub">Extracting phone numbers (+91, 022, 020), emails, and MIDC addresses...</span>
+            <span id="scoutStatusMessage">Querying live web pages across Indian industrial corridors...</span>
+            <span class="scout-status-sub">Extracting verified landlines, mobile numbers, emails, and GIDC/MIDC/SIPCOT addresses...</span>
           </div>
         </div>
 
@@ -352,6 +480,25 @@
           <div class="modal-section">
             <h4 class="section-title">Products & Specialized Capabilities</h4>
             <div id="modalProductsList" class="modal-tags-wrap"></div>
+          </div>
+
+          <!-- Ethyl Acetate & Solvents Dossier -->
+          <div class="modal-section" id="modalSolventsSection" style="display: none;">
+            <h4 class="section-title">🧪 Ethyl Acetate & Chemical Dossier</h4>
+            <div class="solvents-meta-box">
+              <div class="solvents-meta-item">
+                <span class="meta-label">Industry Role</span>
+                <div id="modalEaRole" class="mt-1">--</div>
+              </div>
+              <div class="solvents-meta-item mt-2">
+                <span class="meta-label">Solvents & Feedstocks Handled</span>
+                <div id="modalSolventsList" class="modal-tags-wrap mt-1"></div>
+              </div>
+              <div class="solvents-meta-item mt-2">
+                <span class="meta-label">Target Industrial Applications</span>
+                <div id="modalApplicationsList" class="modal-tags-wrap mt-1"></div>
+              </div>
+            </div>
           </div>
 
           <div class="modal-section">
@@ -413,7 +560,7 @@
             </div>
 
             <div class="contact-hub-item">
-              <span class="hub-label">Factory / Office Address (Maharashtra)</span>
+              <span class="hub-label">Factory / Office Address</span>
               <p class="hub-address-text" id="modalAddress">--</p>
               <a id="linkGoogleMaps" href="#" target="_blank" class="btn btn-outline btn-block mt-2">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -460,7 +607,7 @@
       <div class="drawer-header">
         <div class="drawer-title-group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
-          <h3>Saved Maharashtra Leads (<span id="savedDrawerCount">0</span>)</h3>
+          <h3>Saved Supplier Leads (<span id="savedDrawerCount">0</span>)</h3>
         </div>
         <button id="btnCloseSavedDrawer" class="modal-close-btn">&times;</button>
       </div>
@@ -478,10 +625,10 @@
   <footer class="app-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <strong>MahaPack Scout Platform</strong> &bull; Specialized B2B Supplier Intelligence for Barrier Films, Extrusions, Flexible Inks, Adhesives & Masterbatches.
+        <strong>IndiaPack Scout Platform</strong> &bull; All-India B2B Supplier Intelligence for Barrier Films, Extrusions, Flexible Inks, Adhesives & Masterbatches.
       </div>
       <div class="footer-right">
-        Coverage: <span>Chakan &bull; Waluj &bull; Tarapur &bull; TTC Thane &bull; Kurkumbh &bull; Ambernath &bull; Mumbai</span>
+        Hubs: <span>Sanand &bull; Vapi &bull; Chakan &bull; Silvassa &bull; Chennai &bull; Waluj &bull; Noida &bull; Bengaluru &bull; Hyderabad &bull; Mumbai</span>
       </div>
     </div>
   </footer>
