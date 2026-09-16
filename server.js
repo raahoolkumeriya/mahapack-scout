@@ -14,7 +14,9 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGODB_SRV = process.env.MONGODB_SRV;
+// Sanitize connection string (strip accidental whitespace or wrapping quotes from Render Environment UI)
+const rawMongoUri = process.env.MONGODB_SRV || '';
+const MONGODB_SRV = rawMongoUri.trim().replace(/^["']|["']$/g, '');
 
 app.use(cors());
 app.use(express.json());
@@ -24,25 +26,39 @@ const DATA_FILE = path.join(__dirname, 'data', 'manufacturers.json');
 const BACKUP_FILE = path.join(__dirname, 'data', 'manufacturers.backup.json');
 const MASTER_FILE = path.join(__dirname, 'data', 'manufacturers.master.json');
 
-// MongoDB State
+// MongoDB State & Health Tracker
 let dbClient = null;
 let db = null;
 let manufacturersCol = null;
+let mongoStatus = {
+  connected: false,
+  error: null,
+  cluster: null,
+  lastAttempt: null
+};
 
 async function initMongoDB() {
   if (!MONGODB_SRV) {
-    console.warn('⚠️ MONGODB_SRV is not set in environment or atlas-credentials.env. Falling back to local file.');
+    console.warn('⚠️ MONGODB_SRV is not set in environment or atlas-credentials.env. Running with local verified dataset (105 plants).');
+    mongoStatus.error = 'MONGODB_SRV environment variable not configured';
     return;
   }
+  mongoStatus.lastAttempt = new Date().toISOString();
   try {
+    const hostMatch = MONGODB_SRV.match(/@([^/?]+)/);
+    mongoStatus.cluster = hostMatch ? hostMatch[1] : 'MongoDB Atlas';
+
     dbClient = new MongoClient(MONGODB_SRV, {
-      serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 10000
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 10000,
+      family: 4 // Enforce IPv4 to avoid Linux/Render IPv6 lookup timeouts with Atlas
     });
     await dbClient.connect();
     db = dbClient.db('mahapack_scout');
     manufacturersCol = db.collection('manufacturers');
-    console.log('✅ Connected to MongoDB Atlas (Database: mahapack_scout)');
+    mongoStatus.connected = true;
+    mongoStatus.error = null;
+    console.log(`✅ Connected to MongoDB Atlas (Database: mahapack_scout, Cluster: ${mongoStatus.cluster})`);
     
     // Ensure text and unique indexes exist
     await manufacturersCol.createIndex({ id: 1 }, { unique: true });
@@ -84,7 +100,26 @@ async function initMongoDB() {
       }
     }
   } catch (err) {
+    mongoStatus.connected = false;
+    mongoStatus.error = err.message;
     console.error('❌ MongoDB Atlas connection error:', err.message);
+
+    // Provide immediate actionable diagnostic guidance in Render logs
+    if (err.message && (err.message.includes('SSL alert number 80') || err.message.includes('tlsv1 alert internal error') || err.message.includes('SSL routines'))) {
+      console.error('\n' + '='.repeat(76));
+      console.error('🚨 MONGODB ATLAS FIREWALL ISSUE DETECTED (SSL Alert 80):');
+      console.error('   MongoDB Atlas is rejecting the connection because Render\'s dynamic IP');
+      console.error('   address is not in your Atlas Network Access IP Whitelist.');
+      console.error('');
+      console.error('   👉 QUICK FIX IN MONGODB ATLAS:');
+      console.error('   1. Log in to https://cloud.mongodb.com');
+      console.error('   2. In the left sidebar under "Security", click "Network Access"');
+      console.error('   3. Click the green "+ Add IP Address" button');
+      console.error('   4. Click "Allow Access from Anywhere" (adds 0.0.0.0/0)');
+      console.error('   5. Click "Confirm" and wait ~1 minute for Atlas to update');
+      console.error('   6. In Render, click "Manual Deploy" -> "Deploy latest commit"');
+      console.error('='.repeat(76) + '\n');
+    }
   }
 }
 
@@ -297,6 +332,30 @@ async function scrapeLiveUrl(rawInput) {
 // -------------------------------------------------------------
 // REST API ENDPOINTS
 // -------------------------------------------------------------
+
+// 0. Health & Diagnostics Endpoint (useful for Render & Uptime Monitoring)
+app.get('/api/health', async (req, res) => {
+  const list = await getManufacturersList();
+  res.json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+    database: {
+      connected: !!manufacturersCol,
+      source: manufacturersCol ? 'mongodb_atlas' : 'local_file_fallback',
+      cluster: mongoStatus.cluster,
+      error: mongoStatus.error,
+      troubleshooting: manufacturersCol ? null : {
+        detectedIssue: mongoStatus.error && mongoStatus.error.includes('alert number 80') 
+          ? 'Render IP blocked by MongoDB Atlas firewall (SSL alert 80)' 
+          : 'Database connection inactive',
+        solution: 'Log in to cloud.mongodb.com -> Network Access -> Add IP Address -> Select "Allow Access from Anywhere" (0.0.0.0/0)'
+      }
+    },
+    totalPlants: list.length,
+    version: '1.0.0'
+  });
+});
 
 // 1. Get filtered manufacturers
 app.get('/api/manufacturers', async (req, res) => {

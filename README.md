@@ -135,7 +135,51 @@ http://localhost:3000
 
 ---
 
+## ☁️ Deploying to Render & Troubleshooting MongoDB Atlas
+
+When deploying IndiaPack Scout on cloud hosting services like **Render**, **Railway**, or **Heroku**:
+
+### 1. The SSL Alert 80 Error Explained
+If you encounter this error in your Render logs:
+```text
+❌ MongoDB Atlas connection error: ... tlsv1 alert internal error ... SSL alert number 80
+```
+> [!IMPORTANT]
+> **This is NOT a bug in the code or TLS certificate.** In MongoDB Atlas, when an incoming connection originates from an IP address that is **not whitelisted** in **Network Access**, MongoDB Atlas immediately aborts the TLS handshake with `SSL alert number 80` (`internal_error`).
+>
+> Because Render runs on dynamic AWS cloud servers, its outbound IP changes across deploys and instances.
+
+### 2. How to Fix (Step-by-Step)
+1. Log in to [MongoDB Atlas Console](https://cloud.mongodb.com).
+2. In the left navigation bar under **Security**, click **Network Access**.
+3. Click the green button: **"+ Add IP Address"**.
+4. Click **"Allow Access from Anywhere"** (this automatically enters `0.0.0.0/0`).
+   - *(Optional: Set an expiry time if you want temporary access, or leave permanent).*
+5. Click **Confirm**. MongoDB Atlas will take ~30–60 seconds to update its firewall rules.
+6. In **Render Dashboard**:
+   - Go to your Web Service -> **Environment**.
+   - Ensure `MONGODB_SRV` is set **without surrounding quotes**:
+     ```
+     MONGODB_SRV=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+     ```
+   - If your database user password contains special characters (like `@`, `#`, `%`, `&`, `?`), ensure they are URL-encoded (e.g., `@` becomes `%40`, `#` becomes `%23`).
+7. Click **Manual Deploy** -> **Clear build cache & deploy** (or **Restart Service**).
+
+### 3. Verify Health & Connectivity
+Visit your deployed URL's health endpoint:
+```
+https://<your-render-app>.onrender.com/api/health
+```
+This endpoint reports the live connection status, MongoDB cluster name, and dataset size.
+
+---
+
 ## 📡 REST API Documentation
+
+### 0. Health & Diagnostics
+`GET /api/health`
+
+Returns live system uptime, database connectivity status (`mongodb_atlas` vs `local_file_fallback`), and diagnostic troubleshooting hints if disconnected.
 
 ### 1. Get Manufacturers
 `GET /api/manufacturers`
